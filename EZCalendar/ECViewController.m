@@ -162,6 +162,7 @@
         newEvent.numberDate = numberDate;
         newEvent.eventTitle = [event valueForKey:@"title"];
         newEvent.eventFullDate = startDate;
+        newEvent.thisEvent = event;
         
         //NSLog(@"TITLE: %@", newEvent.eventTitle);
         
@@ -415,6 +416,7 @@
     
     ECEventViewController *eventViewController = [[ECEventViewController alloc]
                                                   initWithNibName:@"ECEventViewController" bundle:nil];
+    eventViewController.delegate = self;
     
     ECEvent *event;
     
@@ -432,6 +434,7 @@
     
 
     eventViewController.event = event;
+    eventViewController.eventStore = self.eventStore;
     
 
     

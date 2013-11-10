@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ECAddEventViewController.h"
+#import "ECEventViewController.h"
 
-@interface ECViewController : UIViewController <ECAddEventViewControllerDelegate>
+@interface ECViewController : UIViewController <ECAddEventViewControllerDelegate, ECEventViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 

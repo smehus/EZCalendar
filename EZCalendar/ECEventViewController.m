@@ -21,6 +21,7 @@
 @property (nonatomic, strong) IBOutlet UIView *detailView;
 
 - (IBAction)close:(id)sender;
+- (IBAction)removeEvent:(id)sender;
 
 @end
 
@@ -100,5 +101,35 @@
     
     NSLog(@"DEALLOC: %@", self);
 }
+
+
+- (IBAction)removeEvent:(id)sender {
+    
+    NSError *err;
+    [self.eventStore removeEvent:self.event.thisEvent span:EKSpanThisEvent commit:YES error:&err];
+    
+    
+    [self willMoveToParentViewController:nil];
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
+    [self.delegate ECAddEventViewRefresh];
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

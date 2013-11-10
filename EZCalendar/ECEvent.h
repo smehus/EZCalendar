@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <EventKit/EventKit.h>
 
 @interface ECEvent : NSObject
 
@@ -23,6 +24,7 @@
 @property (nonatomic, assign) BOOL eventAllDay;
 @property (nonatomic, strong) NSArray *eventAttendees;
 @property (nonatomic, strong) NSString *eventFullDate;
+@property (nonatomic, strong) EKEvent *thisEvent;
 
 
 @end
