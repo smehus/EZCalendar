@@ -7,6 +7,7 @@
 //
 
 #import "ECEventViewController.h"
+#import "ECAddEventViewController.h"
 
 @interface ECEventViewController ()
 
@@ -22,6 +23,7 @@
 
 - (IBAction)close:(id)sender;
 - (IBAction)removeEvent:(id)sender;
+- (IBAction)editEvent:(id)sender;
 
 @end
 
@@ -118,7 +120,10 @@
 }
 
 
-
+- (IBAction)editEvent:(id)sender {
+    
+    NSLog(@"@EDIT EVENT");
+}
 
 
 

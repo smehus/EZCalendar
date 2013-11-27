@@ -44,7 +44,7 @@
     [super viewDidLoad];
     
     NSLog(@"*** VIEW DID LOAD CALLED");
-    //self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accessEventStore) name:@"BecomeActive" object:nil];
 
@@ -360,22 +360,24 @@
     
     ECEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EventCell" forIndexPath:indexPath];
 
+    cell.layer.masksToBounds = NO;
     //cell.backgroundColor = [self colorForIndex:indexPath.row];
+    cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.titleLabel.numberOfLines = 0;
     cell.backgroundColor = [UIColor whiteColor];
-    cell.layer.cornerRadius = 10.0f;
-    cell.layer.borderColor = [UIColor blueColor].CGColor;
-    cell.layer.borderWidth = 1.0f;
+    //cell.layer.cornerRadius = 10.0f;
+    //cell.layer.borderColor = [UIColor blueColor].CGColor;
+    //cell.layer.borderWidth = 1.0f;
     cell.layer.shadowColor = [UIColor blackColor].CGColor;
-    cell.layer.shadowOffset = CGSizeMake(-5.0, -5.0);
+    cell.layer.shadowOffset = CGSizeMake(2.0, 2.0);
     cell.layer.shadowOpacity = 0.8f;
     cell.selectedBackgroundView.backgroundColor = [UIColor blueColor];
     cell.dayLabel.textColor = [UIColor blackColor];
     cell.dayLabel.textAlignment = NSTextAlignmentCenter;
-    cell.titleLabel.textColor = [UIColor blackColor];
+    cell.titleLabel.textColor = [UIColor lightGrayColor];
     UIFont *yourFont = [UIFont fontWithName:@"Helvetica-BoldOblique" size:[UIFont systemFontSize]];
     cell.titleLabel.font = yourFont;
-    [cell.titleLabel sizeToFit];
-    [cell.titleLabel setNumberOfLines:0];
+    
     
     
     //ECEvent *event = [self.eventsArray objectAtIndex:indexPath.row];
