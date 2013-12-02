@@ -135,7 +135,7 @@
     EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
     event.title = self.titleTextField.text;
     event.location = self.locationTextField.text;
-    event.startDate = [[NSDate date] dateByAddingTimeInterval:2400];
+    event.startDate = [[NSDate date] dateByAddingTimeInterval:10000];
     event.endDate = [event.startDate dateByAddingTimeInterval:1];
     [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];
     NSError *err;

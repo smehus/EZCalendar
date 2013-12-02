@@ -14,8 +14,10 @@
 #import "ECEventViewController.h"
 #import "ECHeaderView.h"
 #import "ECAddEventViewController.h"
+#import "ECCollectionViewFlowLayout.h"
+#import "StackedGridLayout.h"
 
-@interface ECViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface ECViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, StackedGridLayoutDelegate>
 
 
 
@@ -26,6 +28,9 @@
 @property (nonatomic, strong) NSMutableArray *secondEventsArray;
 @property (nonatomic, strong) NSMutableArray *thirdEventsArray;
 @property (nonatomic, strong) NSMutableArray *fourthEventsArray;
+
+@property (nonatomic, strong)ECCollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) StackedGridLayout *stackedLayout;
 
 - (IBAction)addEvent:(id)sender;
 
@@ -44,10 +49,25 @@
     [super viewDidLoad];
     
     NSLog(@"*** VIEW DID LOAD CALLED");
+    
+    self.flowLayout = [[ECCollectionViewFlowLayout alloc] init];
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accessEventStore) name:@"BecomeActive" object:nil];
+    
+    //self.collectionView.collectionViewLayout = self.flowLayout;
 
+    
+    self.stackedLayout = [[StackedGridLayout alloc] init];
+    self.stackedLayout.headerHeight = 90.0f;
+    self.collectionView.collectionViewLayout = self.stackedLayout;
+
+    /*
+
+    [self.collectionView registerClass:[ECHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ECHeaderView"];
+    */
+    
+    
     //[self.collectionView registerClass:[ECEventCell class] forCellWithReuseIdentifier:@"EventCell"];
     [self accessEventStore];
     
@@ -196,6 +216,7 @@
         ECEvent *previousMonth;
         if (i == 0) {
             [self.firstEventsArray addObject:currentMonth];
+            firstHeader = currentMonth.eventMonth;
         } else if (i > 0) {
         previousMonth = [self.eventsArray objectAtIndex:i-1];
             
@@ -290,13 +311,18 @@
         return @"SAT";
     } else {
         
-        return @"SUND";
+        return @"SUN";
     }
 }
+
+
+
+
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     ECHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ECHeaderView" forIndexPath:indexPath];
+    NSLog(@"FIRST HEADER: %@", firstHeader);
     
     switch (indexPath.section) {
         case 0:
@@ -315,6 +341,9 @@
         default:
             break;
     }
+    
+     
+    //headerView.backgroundColor = [UIColor redColor];
     
      
     return headerView;
@@ -344,10 +373,32 @@
     } else {
         return [self.fourthEventsArray count];
     }
-    
-    
-
 }
+
+- (NSInteger)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
+   numberOfColumnsInSection:(NSInteger)section {
+    return 3;
+    
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
+   itemInsetsForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+}
+
+- (CGSize)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
+    sizeForItemWithWidth:(CGFloat)width atIndexPath:(NSIndexPath *)indexPath
+{
+    //NSString *searchTerm = self.searches[indexPath.section]; FlickrPhoto *photo =
+    //self.searchResults[searchTerm][indexPath.item];
+    //CGSize picSize = photo.thumbnail.size.width > 0.0f ? photo.thumbnail.size : CGSizeMake(100.0f, 100.0f);
+    //picSize.height += 35.0f; picSize.width += 35.0f;
+    CGSize retval = CGSizeMake(95.0,154.0);
+        
+        return retval;
+    
+                               
+        }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -462,7 +513,7 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    return UIEdgeInsetsMake(20, 5, 20, 5);
+    return UIEdgeInsetsMake(5, 75, 5, 5);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -485,6 +536,76 @@
     
     [self accessEventStore];
 }
+
+
+/*
+- (NSInteger)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
+   numberOfColumnsInSection:(NSInteger)section {
+    
+    
+    return 3;
+}
+
+
+- (UIEdgeInsets)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
+   itemInsetsForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+
+}
+
+
+
+- (CGSize)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
+    sizeForItemWithWidth:(CGFloat)width atIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *searchTerm = self.searches[indexPath.section];
+    
+    FlickrPhoto *photo = self.searchResults[searchTerm][indexPath.item];
+    
+    CGSize picSize = photo.thumbnail.size.width > 0.0f ? photo.thumbnail.size : CGSizeMake(100.0f, 100.0f);
+    
+    picSize.height += 35.0f; picSize.width += 35.0f;
+    
+    CGSize retval = CGSizeMake(width, return retval;
+        
+                               
+                               
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

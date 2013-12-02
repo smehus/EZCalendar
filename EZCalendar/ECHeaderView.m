@@ -20,19 +20,24 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        
+        
+   
+        
     }
     return self;
 }
 
 - (void)setSearchText:(NSString *)text {
     
-    self.sectionLabel.text = text;
-    
     UIImage *shareButtonImage = [[UIImage imageNamed:@"header_bg.png"]
                                  resizableImageWithCapInsets:UIEdgeInsetsMake(68, 68, 68, 68)];
     
     self.backgroundImageView.image = shareButtonImage;
+    self.sectionLabel.textColor = [UIColor blackColor];
+    self.sectionLabel.text = text;
+    
+    
     
 }
 
