@@ -24,7 +24,7 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 
 
 
-@interface ECAddEventViewController ()
+@interface ECAddEventViewController () <UITextFieldDelegate>
 
 
 @property (nonatomic, strong) IBOutlet UITextField *titleTextField;
@@ -40,6 +40,8 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 @property (nonatomic, strong) NSIndexPath *datePickerIndexPath;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
+@property (nonatomic, strong) NSString *titleText;
+@property (nonatomic, strong) NSString *locationText;
 
 
 
@@ -260,9 +262,12 @@ NSUInteger DeviceSystemMajorVersion()
     UITableViewCell *cell = nil;
    
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TitleCell"];
     
+    } else if (indexPath.section == 0 && indexPath.row == 1) {
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell"];
     } else {
     
     
@@ -518,8 +523,8 @@ NSUInteger DeviceSystemMajorVersion()
     
     
     EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
-    event.title = self.titleTextField.text;
-    event.location = self.locationTextField.text;
+    event.title = self.titleText;
+    event.location = self.locationText;
     event.startDate = self.startDate;
     event.endDate = [event.startDate dateByAddingTimeInterval:1];
     [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];
@@ -530,6 +535,37 @@ NSUInteger DeviceSystemMajorVersion()
     
     [self.delegate ECAddEventViewRefresh];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(void) textFieldDidEndEditing:(UITextField *)textField
+{
+    // assuming your text field is embedded directly into the table view
+    // cell and not into any other subview of the table cell
+    UITableViewCell * parentView = (UITableViewCell *)[textField superview];
+    
+    if(parentView)
+    {
+        
+        NSArray * allSubviews = [parentView subviews];
+        for(UIView * oneSubview in allSubviews)
+        {
+            // get only the text fields
+            if([oneSubview isKindOfClass: [UITextField class]])
+            {
+                
+                UITextField * oneTextField = (UITextField *) oneSubview;
+                
+                if (oneTextField.tag == 1001) {
+                    self.titleText = oneTextField.text;
+                    NSLog(@"TITLE: %@", oneTextField.text);
+                } else if (oneTextField.tag == 1002) {
+                    self.locationText = oneTextField.text;
+                }
+                
+            }
+        }
+    }
 }
 
 
