@@ -16,6 +16,7 @@
 #import "ECAddEventViewController.h"
 #import "ECCollectionViewFlowLayout.h"
 #import "StackedGridLayout.h"
+#import "ECEventStore.h"
 
 @interface ECViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, StackedGridLayoutDelegate>
 
@@ -61,6 +62,12 @@
     self.stackedLayout = [[StackedGridLayout alloc] init];
     self.stackedLayout.headerHeight = 90.0f;
     self.collectionView.collectionViewLayout = self.stackedLayout;
+    
+    self.eventsArray = [[NSMutableArray alloc] initWithCapacity:20];
+    self.firstEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
+    self.secondEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
+    self.thirdEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
+    self.fourthEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
 
     /*
 
@@ -70,9 +77,6 @@
     
     //[self.collectionView registerClass:[ECEventCell class] forCellWithReuseIdentifier:@"EventCell"];
     [self accessEventStore];
-    
-
-
 
 }
 
@@ -83,30 +87,19 @@
 }
 
 - (void)accessEventStore {
-    
-    self.eventsArray = nil;
+    /*
     self.eventStore = nil;
-    
     self.eventStore = [[EKEventStore alloc] init];
-    [self.eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
-        
-        if (granted) {
-            NSLog(@"ACCESS GRANTED");
-            [self.view reloadInputViews];
-            [self accessGrantedToEventStore];
-            
-        } else {
-            
-            NSLog(@"ACCESS DENIED");
-        }
-    }];
+     */
     
-    self.eventsArray = [[NSMutableArray alloc] initWithCapacity:20];
-    self.firstEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
-    self.secondEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
-    self.thirdEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
-    self.fourthEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
-    [self.collectionView reloadData];
+    self.eventStore = [[ECEventStore sharedInstance] getThisEventStore];
+    
+ [[ECEventStore sharedInstance] accessEventStore:self.eventStore WithCompletion:^(NSMutableArray *events) {
+     
+     [self parseOutEvents:events];
+ }];
+ 
+    //[self.collectionView reloadData];
     
 }
 
@@ -127,37 +120,12 @@
     return [formatter stringFromDate:date];
 }
 
-
-
-- (void)accessGrantedToEventStore {
-    
-    EKCalendar *calendar = [self.eventStore defaultCalendarForNewEvents];
-
-    NSTimeInterval secondsPerDay = 24 * 60 * 60;
-   
-    
-    //NSDate *endDate = [NSDate distantFuture];
-    NSDate *startDate = [NSDate date];
-    NSDate *eightWeeks = [startDate dateByAddingTimeInterval:secondsPerDay*120];
-    NSArray *calendars = @[calendar];
-    
-    NSPredicate *predicate = [self.eventStore predicateForEventsWithStartDate:startDate endDate:eightWeeks calendars:calendars];
-    
-    //ARRAY OF EVENTS
-    NSArray *events = [self.eventStore eventsMatchingPredicate:predicate];
-    [self parseOutEvents:events];
-  
-}
-
 - (void)parseOutEvents:(NSArray *)events {
     
     
     [self.eventsArray removeAllObjects];
     for (EKEvent *event in events) {
-        //NSLog(@"EVENT: %@", event);
-        
-        
-        
+
         
         NSDate *aDate = [event valueForKey:@"startDate"];
         NSString *startDate = [self formatDate:aDate];
@@ -207,6 +175,11 @@
 //TRYING TO SEPARATE MONTHS INTO DIFFERENT SECTIONS
 
 - (void)parseOutMonths {
+    
+    [self.firstEventsArray removeAllObjects];
+    [self.secondEventsArray removeAllObjects];
+    [self.thirdEventsArray removeAllObjects];
+    [self.fourthEventsArray removeAllObjects];
     
     int eventIndexPath = 1;
     

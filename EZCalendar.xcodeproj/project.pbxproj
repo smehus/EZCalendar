@@ -52,6 +52,7 @@
 		65F727B1182C12170029176B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F727B0182C12170029176B /* QuartzCore.framework */; };
 		65F727B4182C22160029176B /* ECEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F727B3182C22160029176B /* ECEventCell.m */; };
 		65FA88BA184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA88B9184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m */; };
+		65FD470B184E343900EB2DD8 /* ECEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FD470A184E343900EB2DD8 /* ECEventStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,8 @@
 		65F727B3182C22160029176B /* ECEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECEventCell.m; sourceTree = "<group>"; };
 		65FA88B8184696EF00C8D5B3 /* ECCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		65FA88B9184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		65FD4709184E343900EB2DD8 /* ECEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECEventStore.h; sourceTree = "<group>"; };
+		65FD470A184E343900EB2DD8 /* ECEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECEventStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +241,8 @@
 				6501AA82184AC3FB005BB8E7 /* StackedGridLayout.m */,
 				6501AA83184AC3FB005BB8E7 /* StackedGridLayoutSection.h */,
 				6501AA84184AC3FB005BB8E7 /* StackedGridLayoutSection.m */,
+				65FD4709184E343900EB2DD8 /* ECEventStore.h */,
+				65FD470A184E343900EB2DD8 /* ECEventStore.m */,
 			);
 			path = EZCalendar;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				65F727B4182C22160029176B /* ECEventCell.m in Sources */,
 				65FA88BA184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m in Sources */,
 				65F72787182BF2A30029176B /* ECAppDelegate.m in Sources */,
+				65FD470B184E343900EB2DD8 /* ECEventStore.m in Sources */,
 				650C4A6F182EC6300061FA62 /* ECHeaderView.m in Sources */,
 				6501AA85184AC3FB005BB8E7 /* StackedGridLayout.m in Sources */,
 				650C4A6B182D9DF00061FA62 /* ECEventViewController.m in Sources */,
