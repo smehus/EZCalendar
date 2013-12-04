@@ -24,11 +24,11 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 
 
 
-@interface ECAddEventViewController () <UITextFieldDelegate>
+@interface ECAddEventViewController () <UITextFieldDelegate, UIScrollViewDelegate>
 
 
-@property (nonatomic, strong) IBOutlet UITextField *titleTextField;
-@property (nonatomic, strong) IBOutlet UITextField *locationTextField;
+@property (nonatomic, strong) UITextField *titleTextField;
+@property (nonatomic, strong) UITextField *locationTextField;
 @property (nonatomic, weak) IBOutlet UIDatePicker *pickerView;
 // this button appears only when the date picker is shown
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *doneButton;
@@ -42,6 +42,8 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSString *titleText;
 @property (nonatomic, strong) NSString *locationText;
+
+
 
 
 
@@ -71,6 +73,10 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
     [super viewDidLoad];
     
     NSLog(@"EVENT STORE: %@", self.eventStore);
+    /*
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.tableView addGestureRecognizer:gesture];
+    */
     
     // setup our data source
     NSMutableDictionary *itemOne = [@{ kTitleKey : @"Tap a cell to change its date:" } mutableCopy];
@@ -443,10 +449,13 @@ NSUInteger DeviceSystemMajorVersion()
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell.reuseIdentifier == kDateCellID)
     {
-        if (EMBEDDED_DATE_PICKER)
+        if (EMBEDDED_DATE_PICKER) {
             [self displayInlineDatePickerForRowAtIndexPath:indexPath];
-        else
+            [self.view endEditing:YES];
+        } else {
             [self displayExternalDatePickerForRowAtIndexPath:indexPath];
+            
+        }
     }
     else
     {
@@ -494,6 +503,8 @@ NSUInteger DeviceSystemMajorVersion()
  
  @param sender The sender for this action: The "Done" UIBarButtonItem
  */
+
+/*
 - (IBAction)doneAction:(id)sender
 {
     CGRect pickerFrame = self.pickerView.frame;
@@ -512,7 +523,7 @@ NSUInteger DeviceSystemMajorVersion()
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
+*/
 
 - (IBAction)closeScreen:(id)sender {
     
@@ -558,9 +569,11 @@ NSUInteger DeviceSystemMajorVersion()
                 
                 if (oneTextField.tag == 1001) {
                     self.titleText = oneTextField.text;
+                    self.titleTextField = oneTextField;
                     NSLog(@"TITLE: %@", oneTextField.text);
                 } else if (oneTextField.tag == 1002) {
                     self.locationText = oneTextField.text;
+                    self.locationTextField = oneTextField;
                 }
                 
             }
@@ -570,35 +583,25 @@ NSUInteger DeviceSystemMajorVersion()
 
 
 
+- (void)hideKeyboard
 
+{
+    [self.titleTextField resignFirstResponder];
+    [self.locationTextField resignFirstResponder];
+
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    
+    [self.view endEditing:YES];
+}
 
 
 /*
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
 
 
 // Override to support conditional editing of the table view.
