@@ -65,12 +65,7 @@
 		 itemInsets:itemInsets];
         
         // 8
-        
-        
-        // THIS IS WHAT WAS CAUSING THE CRASH
-        //
-        //
-        //
+       
         for (NSInteger j = 0; j < numberOfItems; j++) {
             // 9
             CGFloat itemWidth = (section.columnWidth -
@@ -99,10 +94,28 @@
     }
 }
 
+//FIX SO THAT WHEN THERES MORE THAN 6 EVENTS IN A MONTH YOU CAN SCROLL VERTICALLY AS WELL.
+//SET THE CONTENT SIZE BASED ON HOW MAN EVENTS IN A MONTH
+//
+//
+//
+//
+//
+//
+//
+//
 - (CGSize)collectionViewContentSize {
     return CGSizeMake(_height,
                       self.collectionView.bounds.size.height - 75);
 }
+
+//
+//
+//
+//
+//
+//
+//
 
 - (UICollectionViewLayoutAttributes*)
 layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
