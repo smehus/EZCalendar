@@ -113,6 +113,7 @@
                     <connections>
                         <outlet property="collectionView" destination="GWr-GO-6Fq" id="SQv-wg-Jss"/>
                         <segue destination="6Nn-61-b1p" kind="modal" identifier="AddEvent" id="pmh-sS-cf0"/>
+                        <segue destination="UAk-vJ-mJ8" kind="modal" identifier="EditEvent" id="n46-8T-VIb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -129,7 +130,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TitleCell" id="8Mg-Fq-PRR">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Mg-Fq-PRR" id="St3-2z-P2E">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -148,7 +149,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCell" textLabel="fFd-aK-vRJ" detailTextLabel="g5O-FD-amz" style="IBUITableViewCellStyleValue1" id="stc-wu-1Bn">
-                                <rect key="frame" x="0.0" y="163" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="stc-wu-1Bn" id="dyO-Bj-Kfe">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -172,7 +173,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="datePicker" rowHeight="175" id="QPn-3S-3kb">
-                                <rect key="frame" x="0.0" y="207" width="320" height="175"/>
+                                <rect key="frame" x="0.0" y="143" width="320" height="175"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QPn-3S-3kb" id="Kzv-1H-yeb">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="174"/>
@@ -213,7 +214,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="otherCell" textLabel="dMG-tc-03e" style="IBUITableViewCellStyleDefault" id="lWH-9R-khV">
-                                <rect key="frame" x="0.0" y="382" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="318" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWH-9R-khV" id="zR7-LD-OMB">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -230,7 +231,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" id="PP5-YK-hTu">
-                                <rect key="frame" x="0.0" y="426" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="362" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PP5-YK-hTu" id="L2G-Cd-WhT">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -270,7 +271,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12Z-Hj-ykZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1560" y="49"/>
+            <point key="canvasLocation" x="1559" y="144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SM3-ei-Zuk">
@@ -306,7 +307,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTx-Y9-BVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="49"/>
+            <point key="canvasLocation" x="1113" y="38"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -314,4 +315,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="n46-8T-VIb"/>
+    </inferredMetricsTieBreakers>
 </document>

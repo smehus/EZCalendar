@@ -112,6 +112,9 @@
 
 - (IBAction)removeEvent:(id)sender {
     
+    
+    // ADD AN ALERT VIEW SO YOU STOP DELETING YOU IMPORTANT EVENTS!!!!
+    
     NSError *err;
     [self.eventStore removeEvent:self.event.thisEvent span:EKSpanThisEvent commit:YES error:&err];
     

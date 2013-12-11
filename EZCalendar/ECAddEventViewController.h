@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) EKEventStore *eventStore;
 @property (nonatomic, weak) id <ECAddEventViewControllerDelegate> delegate;
+@property (nonatomic, strong) ECEvent *event;
+@property (nonatomic, assign) BOOL isEditing;
 
 
 - (id)initWithEvent:(ECEvent *)event;

@@ -531,7 +531,21 @@
         ECAddEventViewController *eventViewCont = (ECAddEventViewController *)navController.topViewController;
         eventViewCont.eventStore = self.eventStore;
         eventViewCont.delegate = self;
+        eventViewCont.isEditing = NO;
     }
+    
+    if ([segue.identifier isEqualToString:@"EditEvent"]) {
+        
+        
+        UINavigationController *navController = segue.destinationViewController;
+        ECAddEventViewController *eventViewCont = (ECAddEventViewController *)navController.topViewController;
+        eventViewCont.eventStore = self.eventStore;
+        eventViewCont.delegate = self;
+        eventViewCont.event = sender;
+        eventViewCont.isEditing = YES;
+
+    }
+    
 }
 
 

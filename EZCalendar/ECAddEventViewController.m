@@ -45,8 +45,8 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 @property (nonatomic, strong) NSString *locationText;
 
 
-@property (nonatomic, strong) ECEvent *event;
-@property (nonatomic, assign) BOOL isEditing;
+
+
 
 
 @property (assign) NSInteger pickerCellRowHeight;
@@ -65,8 +65,7 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 {
     self = [super initWithStyle:style];
     if (self) {
-        
-        self.isEditing = NO;
+    
     }
     return self;
 }
@@ -74,8 +73,7 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 - (id)initWithEvent:(ECEvent *)event {
     
     if ((self = [super init])) {
-        self.event = event;
-        self.isEditing = YES;
+    
     }
     return self;
 }
@@ -88,6 +86,7 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
   
     
     NSLog(@"EVENT STORE: %@", self.eventStore);
+    NSLog(@"THE EVENT: %@", self.event);
     /*
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.tableView addGestureRecognizer:gesture];
@@ -287,7 +286,10 @@ NSUInteger DeviceSystemMajorVersion()
     
     if (indexPath.section == 0 && indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TitleCell"];
-       /*
+        //
+        //
+        //
+        //
         if (self.isEditing) {
             NSArray *subViews = [cell subviews];
             for (UIView *textField in subViews) {
@@ -297,8 +299,11 @@ NSUInteger DeviceSystemMajorVersion()
                 }
             }
         }
+        //
+        //
+        //
+        //
         
-        */
     
     } else if (indexPath.section == 0 && indexPath.row == 1) {
         
