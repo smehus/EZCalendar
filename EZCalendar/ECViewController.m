@@ -92,7 +92,12 @@
     self.eventStore = [[EKEventStore alloc] init];
      */
     
-    self.eventStore = [[ECEventStore sharedInstance] getThisEventStore];
+    if (self.eventStore == nil) {
+        
+        self.eventStore = [[ECEventStore sharedInstance] getThisEventStore];
+    }
+    
+    
     
  [[ECEventStore sharedInstance] accessEventStore:self.eventStore WithCompletion:^(NSMutableArray *events) {
      
@@ -125,11 +130,24 @@
     
     [self.eventsArray removeAllObjects];
     for (EKEvent *event in events) {
-
         
+        //
+        // EXAMPLE OF EDITING AN EVENT
+        //
+        //
+        /*
+        event.location = @"this location";
+        NSError *err;
+    [self.eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+         
+         */
+
+//        NSLog(@"EVENT:  %@", event);
         NSDate *aDate = [event valueForKey:@"startDate"];
         NSString *startDate = [self formatDate:aDate];
         
+        NSString *time = [self formatTime:aDate];
+       
         NSString *noYear = [startDate stringByReplacingOccurrencesOfString:@"2014" withString:@""];
         NSString *finalStartDate = [noYear stringByReplacingOccurrencesOfString:@"2013" withString:@""];
         
@@ -142,7 +160,8 @@
         NSString *month = [self parseMonth:[monthArray objectAtIndex:1]];
         NSString *numberDate = [monthArray objectAtIndex:2];
    
-        
+        NSString *location = [event valueForKey:@"location"];
+//        NSLog(@"LOCATION: %@", location);
         
         ECEvent *newEvent = [[ECEvent alloc] init];
         newEvent.eventDay = dayString;
@@ -150,7 +169,9 @@
         newEvent.numberDate = numberDate;
         newEvent.eventTitle = [event valueForKey:@"title"];
         newEvent.eventFullDate = startDate;
+        newEvent.eventLocation = location;
         newEvent.thisEvent = event;
+        newEvent.eventTime = time;
         
         //NSLog(@"TITLE: %@", newEvent.eventTitle);
         
@@ -169,6 +190,20 @@
     });
    
     //NSLog(@"EVENTS ARRAY: %@", self.eventsArray);
+}
+
+
+- (NSString *)formatTime:(NSDate *)date {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *string = [formatter stringFromDate:date];
+    NSLog(@"TIME: %@", string);
+    return string;
+    
+    
 }
 
 
@@ -508,6 +543,16 @@
 - (void)ECAddEventViewRefresh {
     
     [self accessEventStore];
+}
+
+- (void)ECEditEventWithEvent:(ECEvent *)event {
+    
+    
+    // add a custom segue for editing events so you can add the correct event
+    
+    // I store the actual EKEvent in the date model. So edit that event?
+    
+    [self performSegueWithIdentifier:@"AddEvent" sender:event];
 }
 
 

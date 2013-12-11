@@ -7,6 +7,7 @@
 //
 
 #import "ECAddEventViewController.h"
+#import "ECEvent.h"
 
 #define kPickerAnimationDuration 0.40
 #define kDatePickerTag 99
@@ -44,7 +45,8 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 @property (nonatomic, strong) NSString *locationText;
 
 
-
+@property (nonatomic, strong) ECEvent *event;
+@property (nonatomic, assign) BOOL isEditing;
 
 
 @property (assign) NSInteger pickerCellRowHeight;
@@ -63,14 +65,27 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
+        self.isEditing = NO;
     }
     return self;
 }
 
+- (id)initWithEvent:(ECEvent *)event {
+    
+    if ((self = [super init])) {
+        self.event = event;
+        self.isEditing = YES;
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+  
     
     NSLog(@"EVENT STORE: %@", self.eventStore);
     /*
@@ -266,10 +281,24 @@ NSUInteger DeviceSystemMajorVersion()
 {
     
     UITableViewCell *cell = nil;
+    
+ 
    
     
     if (indexPath.section == 0 && indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TitleCell"];
+       /*
+        if (self.isEditing) {
+            NSArray *subViews = [cell subviews];
+            for (UIView *textField in subViews) {
+                if (textField.tag == 1001) {
+                    UITextField * text = (UITextField *)textField;
+                    text.text = self.event.eventTitle;
+                }
+            }
+        }
+        
+        */
     
     } else if (indexPath.section == 0 && indexPath.row == 1) {
         
@@ -541,12 +570,15 @@ NSUInteger DeviceSystemMajorVersion()
     [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];
     NSError *err;
     [self.eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+
     
     NSLog(@"EVENT: %@ TITLE: %@", event, self.titleTextField.text);
     
     [self.delegate ECAddEventViewRefresh];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 
 -(void) textFieldDidEndEditing:(UITextField *)textField

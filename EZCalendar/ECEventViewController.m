@@ -83,7 +83,12 @@
     
     self.titleLabel.text = self.event.eventTitle;
     self.dateLabel.text = self.event.eventFullDate;
+    self.locationLabel.text = self.event.eventLocation;
+    self.timeLabel.text = self.event.eventTime;
+
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -123,6 +128,8 @@
 - (IBAction)editEvent:(id)sender {
     
     NSLog(@"@EDIT EVENT");
+    
+    [self.delegate ECEditEventWithEvent:self.event];
 }
 
 

@@ -14,6 +14,7 @@
 @protocol ECEventViewControllerDelegate <NSObject>
 
 - (void)ECAddEventViewRefresh;
+- (void)ECEditEventWithEvent:(ECEvent *)event;
 
 @end
 

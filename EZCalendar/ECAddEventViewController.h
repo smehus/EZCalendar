@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
 
+@class ECEvent;
+
 @class ECAddEventViewController;
 
 @protocol ECAddEventViewControllerDelegate <NSObject>
@@ -21,5 +23,8 @@
 
 @property (nonatomic, strong) EKEventStore *eventStore;
 @property (nonatomic, weak) id <ECAddEventViewControllerDelegate> delegate;
+
+
+- (id)initWithEvent:(ECEvent *)event;
 
 @end
