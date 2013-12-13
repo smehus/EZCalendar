@@ -8,6 +8,12 @@
 
 #import "ECAppDelegate.h"
 #import "ECViewController.h"
+#import "SWRevealViewController.h"
+#import "ECRearViewController.h"
+
+
+
+
 
 @implementation ECAppDelegate {
     
@@ -19,9 +25,30 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    //UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	//self.window = window;
+    
     _notFirstRun = NO;
     [[UINavigationBar appearance] setBackgroundColor:[UIColor blueColor]];
     //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"2-orange-menu-bar"] forBarMetrics:UIBarMetricsDefault];
+    /*
+    ECRearViewController *rearViewController = [[ECRearViewController alloc] init];
+     ECOpeningViewController *frontViewController = [[ECOpeningViewController alloc] init];
+    
+    SWRevealViewController *mainRevealController = [[SWRevealViewController alloc] initWithRearViewController:rearViewController frontViewController:frontViewController];
+    
+    mainRevealController.rearViewRevealWidth = 60;
+    mainRevealController.rearViewRevealOverdraw = 120;
+    mainRevealController.bounceBackOnOverdraw = NO;
+    mainRevealController.stableDragOnOverdraw = YES;
+    
+    mainRevealController.delegate = self;
+    
+    self.window.rootViewController = mainRevealController;
+    //[self.window makeKeyAndVisible];
+    
+*/
    
     // Override point for customization after application launch.
     return YES;

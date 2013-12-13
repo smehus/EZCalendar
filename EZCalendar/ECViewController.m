@@ -18,6 +18,7 @@
 #import "StackedGridLayout.h"
 #import "ECEventStore.h"
 #import <EventKitUI/EventKitUI.h>
+#import "SWRevealViewController.h"
 
 @interface ECViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, StackedGridLayoutDelegate, EKEventEditViewDelegate, UINavigationControllerDelegate, UINavigationBarDelegate>
 
@@ -34,6 +35,8 @@
 @property (nonatomic, strong)ECCollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) StackedGridLayout *stackedLayout;
 
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButtonItem;
+
 - (IBAction)addEvent:(id)sender;
 
 @end
@@ -49,6 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     
     self.flowLayout = [[ECCollectionViewFlowLayout alloc] init];
     self.view.backgroundColor = [UIColor lightGrayColor];
@@ -67,20 +72,12 @@
     self.secondEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
     self.thirdEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
     self.fourthEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    
+    [self.revealButtonItem setTarget: self.revealViewController];
+    [self.revealButtonItem setAction: @selector( revealToggle: )];
+    
 
-    /*
-
-    [self.collectionView registerClass:[ECHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ECHeaderView"];
-    */
-    
-    
-    //[self.collectionView registerClass:[ECEventCell class] forCellWithReuseIdentifier:@"EventCell"];
-    
-    /*
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]){
-        self.edgesForExtendedLayout = UIRectEdgeBottom;
-    }
-    */
     
     [self accessEventStore];
 
@@ -91,6 +88,9 @@
     [super viewWillAppear:animated];
     [self.collectionView reloadData];
 }
+
+
+
 
 - (void)accessEventStore {
     /*

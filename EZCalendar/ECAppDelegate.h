@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWRevealViewController.h"
 
-@interface ECAppDelegate : UIResponder <UIApplicationDelegate>
+@interface ECAppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

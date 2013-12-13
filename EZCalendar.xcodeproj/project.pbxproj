@@ -58,6 +58,8 @@
 		6575297F185A4E92000E3226 /* 6-black-navigation-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65752971185A4E92000E3226 /* 6-black-navigation-bar@2x.png */; };
 		65752980185A4E92000E3226 /* 6-black-settings-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 65752972185A4E92000E3226 /* 6-black-settings-button.png */; };
 		65752981185A4E92000E3226 /* 6-black-settings-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65752973185A4E92000E3226 /* 6-black-settings-button@2x.png */; };
+		65752984185B356C000E3226 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65752983185B356C000E3226 /* SWRevealViewController.m */; };
+		65752994185B45CC000E3226 /* ECRearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65752993185B45CC000E3226 /* ECRearViewController.m */; };
 		65F72777182BF2A30029176B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F72776182BF2A30029176B /* Foundation.framework */; };
 		65F72779182BF2A30029176B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F72778182BF2A30029176B /* CoreGraphics.framework */; };
 		65F7277B182BF2A30029176B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F7277A182BF2A30029176B /* UIKit.framework */; };
@@ -147,6 +149,10 @@
 		65752971185A4E92000E3226 /* 6-black-navigation-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6-black-navigation-bar@2x.png"; sourceTree = "<group>"; };
 		65752972185A4E92000E3226 /* 6-black-settings-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6-black-settings-button.png"; sourceTree = "<group>"; };
 		65752973185A4E92000E3226 /* 6-black-settings-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6-black-settings-button@2x.png"; sourceTree = "<group>"; };
+		65752982185B356C000E3226 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		65752983185B356C000E3226 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		65752992185B45CC000E3226 /* ECRearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECRearViewController.h; sourceTree = "<group>"; };
+		65752993185B45CC000E3226 /* ECRearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECRearViewController.m; sourceTree = "<group>"; };
 		65F72773182BF2A30029176B /* EZCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F72776182BF2A30029176B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65F72778182BF2A30029176B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -312,6 +318,8 @@
 				65F72785182BF2A30029176B /* ECAppDelegate.h */,
 				65F72786182BF2A30029176B /* ECAppDelegate.m */,
 				65F72788182BF2A30029176B /* Main.storyboard */,
+				65752982185B356C000E3226 /* SWRevealViewController.h */,
+				65752983185B356C000E3226 /* SWRevealViewController.m */,
 				65F7278B182BF2A30029176B /* ECViewController.h */,
 				65F7278C182BF2A30029176B /* ECViewController.m */,
 				65F7278E182BF2A30029176B /* Images.xcassets */,
@@ -335,6 +343,8 @@
 				6501AA84184AC3FB005BB8E7 /* StackedGridLayoutSection.m */,
 				65FD4709184E343900EB2DD8 /* ECEventStore.h */,
 				65FD470A184E343900EB2DD8 /* ECEventStore.m */,
+				65752992185B45CC000E3226 /* ECRearViewController.h */,
+				65752993185B45CC000E3226 /* ECRearViewController.m */,
 			);
 			path = EZCalendar;
 			sourceTree = "<group>";
@@ -514,6 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65752984185B356C000E3226 /* SWRevealViewController.m in Sources */,
 				65F7278D182BF2A30029176B /* ECViewController.m in Sources */,
 				65F727B4182C22160029176B /* ECEventCell.m in Sources */,
 				65FA88BA184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m in Sources */,
@@ -521,6 +532,7 @@
 				65FD470B184E343900EB2DD8 /* ECEventStore.m in Sources */,
 				650C4A6F182EC6300061FA62 /* ECHeaderView.m in Sources */,
 				6501AA85184AC3FB005BB8E7 /* StackedGridLayout.m in Sources */,
+				65752994185B45CC000E3226 /* ECRearViewController.m in Sources */,
 				650C4A6B182D9DF00061FA62 /* ECEventViewController.m in Sources */,
 				6501AA86184AC3FB005BB8E7 /* StackedGridLayoutSection.m in Sources */,
 				65F727AF182BFE050029176B /* ECEvent.m in Sources */,
