@@ -60,6 +60,12 @@
 		65752981185A4E92000E3226 /* 6-black-settings-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65752973185A4E92000E3226 /* 6-black-settings-button@2x.png */; };
 		65752984185B356C000E3226 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65752983185B356C000E3226 /* SWRevealViewController.m */; };
 		65752994185B45CC000E3226 /* ECRearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65752993185B45CC000E3226 /* ECRearViewController.m */; };
+		657529A6185B62CE000E3226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657529A5185B62CE000E3226 /* MapKit.framework */; };
+		657529B4185BA8B8000E3226 /* TSQCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 657529AD185BA8B8000E3226 /* TSQCalendarCell.m */; };
+		657529B5185BA8B8000E3226 /* TSQCalendarMonthHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 657529AF185BA8B8000E3226 /* TSQCalendarMonthHeaderCell.m */; };
+		657529B6185BA8B8000E3226 /* TSQCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 657529B1185BA8B8000E3226 /* TSQCalendarRowCell.m */; };
+		657529B7185BA8B8000E3226 /* TSQCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 657529B3185BA8B8000E3226 /* TSQCalendarView.m */; };
+		657529BA185BA948000E3226 /* ECCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657529B9185BA948000E3226 /* ECCalendarViewController.m */; };
 		65F72777182BF2A30029176B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F72776182BF2A30029176B /* Foundation.framework */; };
 		65F72779182BF2A30029176B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F72778182BF2A30029176B /* CoreGraphics.framework */; };
 		65F7277B182BF2A30029176B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F7277A182BF2A30029176B /* UIKit.framework */; };
@@ -153,6 +159,20 @@
 		65752983185B356C000E3226 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		65752992185B45CC000E3226 /* ECRearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECRearViewController.h; sourceTree = "<group>"; };
 		65752993185B45CC000E3226 /* ECRearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECRearViewController.m; sourceTree = "<group>"; };
+		657529A5185B62CE000E3226 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		657529A7185B642A000E3226 /* TapkuLibrary_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapkuLibrary_Prefix.pch; sourceTree = "<group>"; };
+		657529AA185BA8B8000E3226 /* TimesSquare-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TimesSquare-Prefix.pch"; sourceTree = "<group>"; };
+		657529AB185BA8B8000E3226 /* TimesSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimesSquare.h; sourceTree = "<group>"; };
+		657529AC185BA8B8000E3226 /* TSQCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarCell.h; sourceTree = "<group>"; };
+		657529AD185BA8B8000E3226 /* TSQCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarCell.m; sourceTree = "<group>"; };
+		657529AE185BA8B8000E3226 /* TSQCalendarMonthHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarMonthHeaderCell.h; sourceTree = "<group>"; };
+		657529AF185BA8B8000E3226 /* TSQCalendarMonthHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarMonthHeaderCell.m; sourceTree = "<group>"; };
+		657529B0185BA8B8000E3226 /* TSQCalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarRowCell.h; sourceTree = "<group>"; };
+		657529B1185BA8B8000E3226 /* TSQCalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarRowCell.m; sourceTree = "<group>"; };
+		657529B2185BA8B8000E3226 /* TSQCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarView.h; sourceTree = "<group>"; };
+		657529B3185BA8B8000E3226 /* TSQCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarView.m; sourceTree = "<group>"; };
+		657529B8185BA948000E3226 /* ECCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCalendarViewController.h; sourceTree = "<group>"; };
+		657529B9185BA948000E3226 /* ECCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCalendarViewController.m; sourceTree = "<group>"; };
 		65F72773182BF2A30029176B /* EZCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F72776182BF2A30029176B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65F72778182BF2A30029176B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -189,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657529A6185B62CE000E3226 /* MapKit.framework in Frameworks */,
 				65752964185A3930000E3226 /* EventKitUI.framework in Frameworks */,
 				65F727B1182C12170029176B /* QuartzCore.framework in Frameworks */,
 				65F727AC182BF2BD0029176B /* EventKit.framework in Frameworks */,
@@ -291,9 +312,27 @@
 			name = CollectionViewLayout;
 			sourceTree = "<group>";
 		};
+		657529A9185BA8B8000E3226 /* TimesSquare */ = {
+			isa = PBXGroup;
+			children = (
+				657529AA185BA8B8000E3226 /* TimesSquare-Prefix.pch */,
+				657529AB185BA8B8000E3226 /* TimesSquare.h */,
+				657529AC185BA8B8000E3226 /* TSQCalendarCell.h */,
+				657529AD185BA8B8000E3226 /* TSQCalendarCell.m */,
+				657529AE185BA8B8000E3226 /* TSQCalendarMonthHeaderCell.h */,
+				657529AF185BA8B8000E3226 /* TSQCalendarMonthHeaderCell.m */,
+				657529B0185BA8B8000E3226 /* TSQCalendarRowCell.h */,
+				657529B1185BA8B8000E3226 /* TSQCalendarRowCell.m */,
+				657529B2185BA8B8000E3226 /* TSQCalendarView.h */,
+				657529B3185BA8B8000E3226 /* TSQCalendarView.m */,
+			);
+			path = TimesSquare;
+			sourceTree = "<group>";
+		};
 		65F7276A182BF2A30029176B = {
 			isa = PBXGroup;
 			children = (
+				657529A9185BA8B8000E3226 /* TimesSquare */,
 				65F7277C182BF2A30029176B /* EZCalendar */,
 				65F7279B182BF2A30029176B /* EZCalendarTests */,
 				65F72775182BF2A30029176B /* Frameworks */,
@@ -313,6 +352,7 @@
 		65F72775182BF2A30029176B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				657529A5185B62CE000E3226 /* MapKit.framework */,
 				65752963185A3930000E3226 /* EventKitUI.framework */,
 				65F727B0182C12170029176B /* QuartzCore.framework */,
 				65F727AB182BF2BD0029176B /* EventKit.framework */,
@@ -353,6 +393,8 @@
 				65FD470A184E343900EB2DD8 /* ECEventStore.m */,
 				65752992185B45CC000E3226 /* ECRearViewController.h */,
 				65752993185B45CC000E3226 /* ECRearViewController.m */,
+				657529B8185BA948000E3226 /* ECCalendarViewController.h */,
+				657529B9185BA948000E3226 /* ECCalendarViewController.m */,
 			);
 			path = EZCalendar;
 			sourceTree = "<group>";
@@ -360,6 +402,7 @@
 		65F7277D182BF2A30029176B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				657529A7185B642A000E3226 /* TapkuLibrary_Prefix.pch */,
 				65F7277E182BF2A30029176B /* EZCalendar-Info.plist */,
 				65F7277F182BF2A30029176B /* InfoPlist.strings */,
 				65F72782182BF2A30029176B /* main.m */,
@@ -534,18 +577,23 @@
 			files = (
 				65752984185B356C000E3226 /* SWRevealViewController.m in Sources */,
 				65F7278D182BF2A30029176B /* ECViewController.m in Sources */,
+				657529B4185BA8B8000E3226 /* TSQCalendarCell.m in Sources */,
 				65F727B4182C22160029176B /* ECEventCell.m in Sources */,
 				65FA88BA184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m in Sources */,
 				65F72787182BF2A30029176B /* ECAppDelegate.m in Sources */,
 				65FD470B184E343900EB2DD8 /* ECEventStore.m in Sources */,
 				650C4A6F182EC6300061FA62 /* ECHeaderView.m in Sources */,
+				657529B5185BA8B8000E3226 /* TSQCalendarMonthHeaderCell.m in Sources */,
 				6501AA85184AC3FB005BB8E7 /* StackedGridLayout.m in Sources */,
 				65752994185B45CC000E3226 /* ECRearViewController.m in Sources */,
+				657529BA185BA948000E3226 /* ECCalendarViewController.m in Sources */,
+				657529B7185BA8B8000E3226 /* TSQCalendarView.m in Sources */,
 				650C4A6B182D9DF00061FA62 /* ECEventViewController.m in Sources */,
 				6501AA86184AC3FB005BB8E7 /* StackedGridLayoutSection.m in Sources */,
 				65F727AF182BFE050029176B /* ECEvent.m in Sources */,
 				65F72783182BF2A30029176B /* main.m in Sources */,
 				650C4A9E183002D50061FA62 /* ECAddEventViewController.m in Sources */,
+				657529B6185BA8B8000E3226 /* TSQCalendarRowCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +724,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EZCalendar/EZCalendar-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/Users/smehus/Downloads/tapkulibrary-master/src",
+				);
 				INFOPLIST_FILE = "EZCalendar/EZCalendar-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -692,7 +746,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EZCalendar/EZCalendar-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/Users/smehus/Downloads/tapkulibrary-master/src",
+				);
 				INFOPLIST_FILE = "EZCalendar/EZCalendar-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

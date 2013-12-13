@@ -20,6 +20,7 @@
 #import <EventKitUI/EventKitUI.h>
 #import "SWRevealViewController.h"
 
+
 @interface ECViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, StackedGridLayoutDelegate, EKEventEditViewDelegate, UINavigationControllerDelegate, UINavigationBarDelegate>
 
 
@@ -397,7 +398,7 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
    itemInsetsForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    return UIEdgeInsetsMake(10.0f, 1.0f, 10.0f, 1.0f);
 }
 
 - (CGSize)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
@@ -521,6 +522,13 @@
     
 }
 
+
+/*
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 0;
+}
+*/
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     

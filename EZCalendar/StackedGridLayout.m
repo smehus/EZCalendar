@@ -88,11 +88,15 @@
                                  section.itemInsets.right);
             NSIndexPath *itemIndexPath =
 			[NSIndexPath indexPathForItem:j inSection:i];
-            CGSize itemSize =
+            
+            // SIZE OF THE CELL
+            CGSize itemSize = CGSizeMake(105, 150);
+            /*
 			[_myDelegate collectionView:self.collectionView
 								 layout:self
 				   sizeForItemWithWidth:itemWidth
 							atIndexPath:itemIndexPath];
+             */
             
             // 10
             [section addItemOfSize:itemSize forIndex:j];

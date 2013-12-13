@@ -9,6 +9,8 @@
 #import "ECRearViewController.h"
 #import "ECViewController.h"
 #import "SWRevealViewController.h"
+#import "TSQCalendarView.h"
+
 
 @interface ECRearViewController ()
 
@@ -80,16 +82,25 @@
 {
 
 
-    return 3;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellIdent";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell;
+    if (indexPath.row == 0) {
+       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.textLabel.text = @"Scheduler";
+    } else {
+        
+         cell = [tableView dequeueReusableCellWithIdentifier:@"calendar"];
+        cell.textLabel.text = @"Calendar";
+    }
     
-
-    cell.textLabel.text = @"This Works";
+    
+    
+    
     return cell;
 }
 

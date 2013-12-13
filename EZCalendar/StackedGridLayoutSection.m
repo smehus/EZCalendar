@@ -70,12 +70,9 @@
     
     // 3
     CGRect frame;
-    frame.origin.x = _frame.origin.x +
-	(_columnWidth * shortestColumnIndex) +
-	_itemInsets.left;
-    frame.origin.y = _frame.origin.y +
-	shortestColumnHeight +
-	_itemInsets.top;            // ADD + 75 TO ITEMINSETS.TOP TO ADD SPACE FOR HEADER
+    frame.origin.x = _frame.origin.x + (_columnWidth * shortestColumnIndex) + _itemInsets.left;
+    frame.origin.y = _frame.origin.y + shortestColumnHeight + _itemInsets.top;            // ADD + 75 TO ITEMINSETS.TOP TO ADD SPACE FOR HEADER
+    
     frame.size = size;
     
     // 4
