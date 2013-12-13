@@ -278,6 +278,19 @@
 			path = Black;
 			sourceTree = "<group>";
 		};
+		65752996185B6030000E3226 /* CollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				65FA88B8184696EF00C8D5B3 /* ECCollectionViewFlowLayout.h */,
+				65FA88B9184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m */,
+				6501AA81184AC3FB005BB8E7 /* StackedGridLayout.h */,
+				6501AA82184AC3FB005BB8E7 /* StackedGridLayout.m */,
+				6501AA83184AC3FB005BB8E7 /* StackedGridLayoutSection.h */,
+				6501AA84184AC3FB005BB8E7 /* StackedGridLayoutSection.m */,
+			);
+			name = CollectionViewLayout;
+			sourceTree = "<group>";
+		};
 		65F7276A182BF2A30029176B = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +327,7 @@
 		65F7277C182BF2A30029176B /* EZCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				65752996185B6030000E3226 /* CollectionViewLayout */,
 				650C4A70182EC92F0061FA62 /* Assets */,
 				65F72785182BF2A30029176B /* ECAppDelegate.h */,
 				65F72786182BF2A30029176B /* ECAppDelegate.m */,
@@ -335,12 +349,6 @@
 				650C4A6E182EC6300061FA62 /* ECHeaderView.m */,
 				650C4A9C183002D50061FA62 /* ECAddEventViewController.h */,
 				650C4A9D183002D50061FA62 /* ECAddEventViewController.m */,
-				65FA88B8184696EF00C8D5B3 /* ECCollectionViewFlowLayout.h */,
-				65FA88B9184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m */,
-				6501AA81184AC3FB005BB8E7 /* StackedGridLayout.h */,
-				6501AA82184AC3FB005BB8E7 /* StackedGridLayout.m */,
-				6501AA83184AC3FB005BB8E7 /* StackedGridLayoutSection.h */,
-				6501AA84184AC3FB005BB8E7 /* StackedGridLayoutSection.m */,
 				65FD4709184E343900EB2DD8 /* ECEventStore.h */,
 				65FD470A184E343900EB2DD8 /* ECEventStore.m */,
 				65752992185B45CC000E3226 /* ECRearViewController.h */,

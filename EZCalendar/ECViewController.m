@@ -47,11 +47,23 @@
     NSString *secondHeader;
     NSString *thirdHeader;
     NSString *fourthHeader;
+    
+    UIGravityBehavior *_gravity;
+    UIDynamicAnimator *_animator;
+    CGPoint _previousTouchPoint;
+    BOOL _draggingView;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _animator = [[UIDynamicAnimator alloc]
+                 initWithReferenceView:self.view];
+    
+    UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.view]];
+    itemBehavior.elasticity = 0.4;
+    [_animator addBehavior:itemBehavior];
     
     
     
