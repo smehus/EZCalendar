@@ -86,7 +86,14 @@ static NSString *kOtherCell = @"otherCell";             // the remaining cells a
   
     
     NSLog(@"EVENT STORE: %@", self.eventStore);
-    NSLog(@"THE EVENT: %@", self.event);
+    
+    if (self.editingEvent) {
+        
+        
+            NSLog(@"EDITING IS YES WITH EVENT: %@", self.event.thisEvent);
+    }
+
+    
     /*
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.tableView addGestureRecognizer:gesture];
@@ -286,28 +293,24 @@ NSUInteger DeviceSystemMajorVersion()
     
     if (indexPath.section == 0 && indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TitleCell"];
-        //
-        //
-        //
-        //
-        if (self.isEditing) {
-            NSArray *subViews = [cell subviews];
-            for (UIView *textField in subViews) {
-                if (textField.tag == 1001) {
-                    UITextField * text = (UITextField *)textField;
-                    text.text = self.event.eventTitle;
-                }
-            }
+        
+        if (self.editingEvent) {
+            
+            UITextField *aTextField = (UITextField *)[cell viewWithTag:1001];
+            aTextField.text = self.event.eventTitle;
         }
-        //
-        //
-        //
-        //
+     
         
     
     } else if (indexPath.section == 0 && indexPath.row == 1) {
         
         cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell"];
+        
+        if (self.editingEvent) {
+            
+            UITextField *bTextField = (UITextField *)[cell viewWithTag:1002];
+            bTextField.text = self.event.eventLocation;
+        }
     } else {
     
     
@@ -566,8 +569,19 @@ NSUInteger DeviceSystemMajorVersion()
 
 - (IBAction)finishedAdding:(id)sender {
     
+    /*
+    EKEvent *event;
+    if (self.editingEvent) {
+        event = self.event.thisEvent;
+        NSLog(@"FINISHED EDITING EVENT");
+    } else {
+        event = [EKEvent eventWithEventStore:self.eventStore];
+    }
+    */
     
-    EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
+    EKEvent *event = self.event.thisEvent;
+    
+    
     event.title = self.titleText;
     event.location = self.locationText;
     event.startDate = self.startDate;
@@ -577,7 +591,7 @@ NSUInteger DeviceSystemMajorVersion()
     [self.eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
 
     
-    NSLog(@"EVENT: %@ TITLE: %@", event, self.titleTextField.text);
+    NSLog(@"FINISHED ADDING EVENT: %@ TITLE: %@", event, event.title);
     
     [self.delegate ECAddEventViewRefresh];
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -607,7 +621,7 @@ NSUInteger DeviceSystemMajorVersion()
                 if (oneTextField.tag == 1001) {
                     self.titleText = oneTextField.text;
                     self.titleTextField = oneTextField;
-                    NSLog(@"TITLE: %@", oneTextField.text);
+                    
                 } else if (oneTextField.tag == 1002) {
                     self.locationText = oneTextField.text;
                     self.locationTextField = oneTextField;

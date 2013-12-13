@@ -20,6 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     _notFirstRun = NO;
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor blueColor]];
+    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"2-orange-menu-bar"] forBarMetrics:UIBarMetricsDefault];
    
     // Override point for customization after application launch.
     return YES;

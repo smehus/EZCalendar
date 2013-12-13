@@ -17,8 +17,9 @@
 #import "ECCollectionViewFlowLayout.h"
 #import "StackedGridLayout.h"
 #import "ECEventStore.h"
+#import <EventKitUI/EventKitUI.h>
 
-@interface ECViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, StackedGridLayoutDelegate>
+@interface ECViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, StackedGridLayoutDelegate, EKEventEditViewDelegate, UINavigationControllerDelegate, UINavigationBarDelegate>
 
 
 
@@ -49,8 +50,6 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"*** VIEW DID LOAD CALLED");
-    
     self.flowLayout = [[ECCollectionViewFlowLayout alloc] init];
     self.view.backgroundColor = [UIColor lightGrayColor];
     
@@ -76,6 +75,13 @@
     
     
     //[self.collectionView registerClass:[ECEventCell class] forCellWithReuseIdentifier:@"EventCell"];
+    
+    /*
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]){
+        self.edgesForExtendedLayout = UIRectEdgeBottom;
+    }
+    */
+    
     [self accessEventStore];
 
 }
@@ -131,18 +137,9 @@
     [self.eventsArray removeAllObjects];
     for (EKEvent *event in events) {
         
-        //
-        // EXAMPLE OF EDITING AN EVENT
-        //
-        //
-        /*
-        event.location = @"this location";
-        NSError *err;
-    [self.eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
-         
-         */
 
-//        NSLog(@"EVENT:  %@", event);
+        
+       // NSLog(@"EVENT:  %@", event);
         NSDate *aDate = [event valueForKey:@"startDate"];
         NSString *startDate = [self formatDate:aDate];
         
@@ -163,6 +160,8 @@
         NSString *location = [event valueForKey:@"location"];
 //        NSLog(@"LOCATION: %@", location);
         
+        NSArray *attendees = [event valueForKey:@"attendees"];
+        
         ECEvent *newEvent = [[ECEvent alloc] init];
         newEvent.eventDay = dayString;
         newEvent.eventMonth = month;
@@ -172,7 +171,7 @@
         newEvent.eventLocation = location;
         newEvent.thisEvent = event;
         newEvent.eventTime = time;
-        
+        newEvent.eventAttendees = attendees;
         //NSLog(@"TITLE: %@", newEvent.eventTitle);
         
 
@@ -200,7 +199,7 @@
     [formatter setDateFormat:@"HH:mm:ss"];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     NSString *string = [formatter stringFromDate:date];
-    NSLog(@"TIME: %@", string);
+    //NSLog(@"TIME: %@", string);
     return string;
     
     
@@ -267,11 +266,6 @@
         }
     }
     
-   NSLog(@"FIRSTEVENT ARRAY: %@", self.firstEventsArray);
-    NSLog(@"SECONDEVENT ARRAY: %@", self.secondEventsArray);
-    NSLog(@"THIRDEVENT ARRAY: %@", self.thirdEventsArray);
-    NSLog(@"FOURTHEVENT ARRAY: %@", self.fourthEventsArray);
-    
 }
 
 - (NSString *)parseMonth:(NSString *)month {
@@ -326,7 +320,7 @@
 
 
 
-
+/*
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     ECHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ECHeaderView" forIndexPath:indexPath];
@@ -355,10 +349,10 @@
     
      
     return headerView;
-    
-    
-    
+ 
 }
+*/
+
 
 
 -(UIColor*)colorForIndex:(NSInteger) index {
@@ -418,7 +412,10 @@
     
     
     ECEventCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EventCell" forIndexPath:indexPath];
-
+    
+    cell.layer.shouldRasterize = YES;
+    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+     
     cell.layer.masksToBounds = NO;
     //cell.backgroundColor = [self colorForIndex:indexPath.row];
     cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -531,7 +528,7 @@
         ECAddEventViewController *eventViewCont = (ECAddEventViewController *)navController.topViewController;
         eventViewCont.eventStore = self.eventStore;
         eventViewCont.delegate = self;
-        eventViewCont.isEditing = NO;
+        eventViewCont.editingEvent = NO;
     }
     
     if ([segue.identifier isEqualToString:@"EditEvent"]) {
@@ -542,7 +539,7 @@
         eventViewCont.eventStore = self.eventStore;
         eventViewCont.delegate = self;
         eventViewCont.event = sender;
-        eventViewCont.isEditing = YES;
+        eventViewCont.editingEvent = YES;
 
     }
     
@@ -551,7 +548,14 @@
 
 - (IBAction)addEvent:(id)sender {
     
-    [self performSegueWithIdentifier:@"AddEvent" sender:nil];
+    //[self performSegueWithIdentifier:@"AddEvent" sender:nil];
+    
+    EKEventEditViewController *editViewController = [[EKEventEditViewController alloc] init];
+    editViewController.eventStore = self.eventStore;
+    editViewController.editViewDelegate = self;
+    
+    [self presentViewController:editViewController animated:YES completion:nil];
+
 }
 
 - (void)ECAddEventViewRefresh {
@@ -566,7 +570,24 @@
     
     // I store the actual EKEvent in the date model. So edit that event?
     
-    [self performSegueWithIdentifier:@"AddEvent" sender:event];
+   // NSLog(@"EDITEVENTWITHEVENT: %@", event);
+    //[self performSegueWithIdentifier:@"EditEvent" sender:event];
+    
+    EKEvent *editEvent = event.thisEvent;
+    
+    EKEventEditViewController *editViewController = [[EKEventEditViewController alloc] init];
+    editViewController.event = editEvent;
+    editViewController.eventStore = self.eventStore;
+    editViewController.editViewDelegate = self;
+
+    [self presentViewController:editViewController animated:YES completion:nil];
+  
+}
+
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
+    
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    [self accessEventStore];
 }
 
 

@@ -23,12 +23,16 @@
     // 1
     [super prepareLayout];
     
-    self.headerHeight = 75.0f;
+    self.headerHeight = 25.0f;
     
 
     // 2
     _myDelegate = (id <StackedGridLayoutDelegate>)self.collectionView.delegate;
     _sectionData = [NSMutableArray new];
+    
+    // HEIGHT EQUALS THE WIDTH INSTEAD
+    // MOVES THE SCROLL VIEW HORIZONTAL
+    
     _height = 0.0f;
     
     // 3
@@ -43,13 +47,21 @@
         currentOrigin.x = _height;
         
         // 6
+        
+        // SETTING THE NUMBER OF COLUMNS IN SECTION
+        
         NSInteger numberOfColumns =
 		[_myDelegate collectionView:self.collectionView
 							 layout:self
 		   numberOfColumnsInSection:i];
         
+        // NUMBER OF ITEMS OBVI
+        
         NSInteger numberOfItems =
 		[self.collectionView numberOfItemsInSection:i];
+        
+        
+        // CONFIGURING THE INSETS OF ITEMS
         
         UIEdgeInsets itemInsets =
 		[_myDelegate collectionView:self.collectionView
@@ -57,6 +69,9 @@
 		itemInsetsForSectionAtIndex:i];
         
         // 7
+        
+        // MAKING THE SECTION
+        
         StackedGridLayoutSection *section =
 		[[StackedGridLayoutSection alloc]
 		 initWithOrigin:currentOrigin
@@ -89,6 +104,9 @@
         [_sectionData addObject:section];
         
         // 12
+        
+        // ADDING ANOTHER SECTION
+        
         _height += section.frame.size.width;
         currentOrigin.x = _height;
     }
@@ -145,7 +163,7 @@ layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
     CGRect headerFrame = CGRectMake(sectionFrame.origin.x,
                sectionFrame.origin.y,
                sectionFrame.size.width,
-               75);
+            75);
     attributes.frame = headerFrame;
      
     return attributes;
@@ -182,7 +200,7 @@ layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
              
               
               //THIS CRASHES BECAUSE USING ECHEADERVIEW
-             NSLog(@"HEADER FRAME INTERSECTS");
+
              
 			 UICollectionViewLayoutAttributes *la =
 			 [self layoutAttributesForSupplementaryViewOfKind:

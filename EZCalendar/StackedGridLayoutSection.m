@@ -75,7 +75,7 @@
 	_itemInsets.left;
     frame.origin.y = _frame.origin.y +
 	shortestColumnHeight +
-	_itemInsets.top + 75;
+	_itemInsets.top;            // ADD + 75 TO ITEMINSETS.TOP TO ADD SPACE FOR HEADER
     frame.size = size;
     
     // 4
