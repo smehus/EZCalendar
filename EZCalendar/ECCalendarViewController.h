@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
 
 @interface ECCalendarViewController : UIViewController
+
+@property (nonatomic, strong) EKEventStore *eventStore;
 
 @end

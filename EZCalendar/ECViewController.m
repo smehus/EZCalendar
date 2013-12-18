@@ -401,9 +401,18 @@
     return UIEdgeInsetsMake(10.0f, 1.0f, 10.0f, 1.0f);
 }
 
-- (CGSize)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl
-    sizeForItemWithWidth:(CGFloat)width atIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView*)cv layout:(UICollectionViewLayout*)cvl sizeForItemWithWidth:(CGFloat)width atIndexPath:(NSIndexPath *)indexPath
+
 {
+
+    
+    
+    
+    
+    
+    
+    
+    
     //NSString *searchTerm = self.searches[indexPath.section]; FlickrPhoto *photo =
     //self.searchResults[searchTerm][indexPath.item];
     //CGSize picSize = photo.thumbnail.size.width > 0.0f ? photo.thumbnail.size : CGSizeMake(100.0f, 100.0f);

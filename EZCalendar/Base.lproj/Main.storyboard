@@ -316,7 +316,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ArA-2K-ghn" kind="custom" identifier="CalendarSegue" customClass="SWRevealViewControllerSegue" id="I7S-fQ-IRl"/>
+                                    <segue destination="ArA-2K-ghn" kind="custom" identifier="CalendarSegue" customClass="SWRevealViewControllerSegue" id="Urk-0M-icV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -354,10 +354,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rlb-UD-cDh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="FIv-Mc-nZf"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="revealButtonItem" destination="FIv-Mc-nZf" id="e8K-ja-sSQ"/>
+                        <outlet property="tableView" destination="olw-xj-OVW" id="NAi-81-FrG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vML-rB-MoP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733" y="1196"/>
+            <point key="canvasLocation" x="949" y="1196"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SM3-ei-Zuk">
@@ -396,6 +403,24 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1331" y="187"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZC2-3K-uf1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VEI-cR-Hwm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t7b-dT-pZG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ArA-2K-ghn" kind="relationship" relationship="rootViewController" id="XNb-21-c25"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fz7-YC-USu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="592" y="1196"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -405,5 +430,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <inferredMetricsTieBreakers>
         <segue reference="uGR-rN-PdH"/>
         <segue reference="jU7-YV-vY3"/>
+        <segue reference="XNb-21-c25"/>
     </inferredMetricsTieBreakers>
 </document>
