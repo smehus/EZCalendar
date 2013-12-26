@@ -66,6 +66,12 @@
 		657529B6185BA8B8000E3226 /* TSQCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 657529B1185BA8B8000E3226 /* TSQCalendarRowCell.m */; };
 		657529B7185BA8B8000E3226 /* TSQCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 657529B3185BA8B8000E3226 /* TSQCalendarView.m */; };
 		657529BA185BA948000E3226 /* ECCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657529B9185BA948000E3226 /* ECCalendarViewController.m */; };
+		65D2BF46186CAC1200A14918 /* ECTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D2BF45186CAC1200A14918 /* ECTodayViewController.m */; };
+		65D2BF4E186CBE8F00A14918 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65D2BF4B186CBE8F00A14918 /* readme.txt */; };
+		65D2BF4F186CBE8F00A14918 /* tweed.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D2BF4C186CBE8F00A14918 /* tweed.png */; };
+		65D2BF50186CBE8F00A14918 /* tweed_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D2BF4D186CBE8F00A14918 /* tweed_@2X.png */; };
+		65D2BF52186CC25D00A14918 /* snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65D2BF51186CC25D00A14918 /* snow.jpg */; };
+		65D2BF54186CD38700A14918 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2BF53186CD38700A14918 /* CoreLocation.framework */; };
 		65F72777182BF2A30029176B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F72776182BF2A30029176B /* Foundation.framework */; };
 		65F72779182BF2A30029176B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F72778182BF2A30029176B /* CoreGraphics.framework */; };
 		65F7277B182BF2A30029176B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F7277A182BF2A30029176B /* UIKit.framework */; };
@@ -173,6 +179,13 @@
 		657529B3185BA8B8000E3226 /* TSQCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarView.m; sourceTree = "<group>"; };
 		657529B8185BA948000E3226 /* ECCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCalendarViewController.h; sourceTree = "<group>"; };
 		657529B9185BA948000E3226 /* ECCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCalendarViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		65D2BF44186CAC1200A14918 /* ECTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTodayViewController.h; sourceTree = "<group>"; };
+		65D2BF45186CAC1200A14918 /* ECTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECTodayViewController.m; sourceTree = "<group>"; };
+		65D2BF4B186CBE8F00A14918 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		65D2BF4C186CBE8F00A14918 /* tweed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweed.png; sourceTree = "<group>"; };
+		65D2BF4D186CBE8F00A14918 /* tweed_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tweed_@2X.png"; sourceTree = "<group>"; };
+		65D2BF51186CC25D00A14918 /* snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snow.jpg; sourceTree = "<group>"; };
+		65D2BF53186CD38700A14918 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		65F72773182BF2A30029176B /* EZCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F72776182BF2A30029176B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65F72778182BF2A30029176B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -209,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D2BF54186CD38700A14918 /* CoreLocation.framework in Frameworks */,
 				657529A6185B62CE000E3226 /* MapKit.framework in Frameworks */,
 				65752964185A3930000E3226 /* EventKitUI.framework in Frameworks */,
 				65F727B1182C12170029176B /* QuartzCore.framework in Frameworks */,
@@ -235,6 +249,8 @@
 		650C4A70182EC92F0061FA62 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				65D2BF51186CC25D00A14918 /* snow.jpg */,
+				65D2BF4A186CBE8F00A14918 /* tweed */,
 				65752965185A4E92000E3226 /* Black */,
 				6575294E185A1A4B000E3226 /* Orange */,
 				650C4A71182EC92F0061FA62 /* bg_cork.png */,
@@ -329,6 +345,16 @@
 			path = TimesSquare;
 			sourceTree = "<group>";
 		};
+		65D2BF4A186CBE8F00A14918 /* tweed */ = {
+			isa = PBXGroup;
+			children = (
+				65D2BF4B186CBE8F00A14918 /* readme.txt */,
+				65D2BF4C186CBE8F00A14918 /* tweed.png */,
+				65D2BF4D186CBE8F00A14918 /* tweed_@2X.png */,
+			);
+			path = tweed;
+			sourceTree = "<group>";
+		};
 		65F7276A182BF2A30029176B = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +378,7 @@
 		65F72775182BF2A30029176B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65D2BF53186CD38700A14918 /* CoreLocation.framework */,
 				657529A5185B62CE000E3226 /* MapKit.framework */,
 				65752963185A3930000E3226 /* EventKitUI.framework */,
 				65F727B0182C12170029176B /* QuartzCore.framework */,
@@ -374,8 +401,12 @@
 				65F72788182BF2A30029176B /* Main.storyboard */,
 				65752982185B356C000E3226 /* SWRevealViewController.h */,
 				65752983185B356C000E3226 /* SWRevealViewController.m */,
+				65D2BF44186CAC1200A14918 /* ECTodayViewController.h */,
+				65D2BF45186CAC1200A14918 /* ECTodayViewController.m */,
 				65F7278B182BF2A30029176B /* ECViewController.h */,
 				65F7278C182BF2A30029176B /* ECViewController.m */,
+				657529B8185BA948000E3226 /* ECCalendarViewController.h */,
+				657529B9185BA948000E3226 /* ECCalendarViewController.m */,
 				65F7278E182BF2A30029176B /* Images.xcassets */,
 				65F7277D182BF2A30029176B /* Supporting Files */,
 				65F727AD182BFE050029176B /* ECEvent.h */,
@@ -393,8 +424,6 @@
 				65FD470A184E343900EB2DD8 /* ECEventStore.m */,
 				65752992185B45CC000E3226 /* ECRearViewController.h */,
 				65752993185B45CC000E3226 /* ECRearViewController.m */,
-				657529B8185BA948000E3226 /* ECCalendarViewController.h */,
-				657529B9185BA948000E3226 /* ECCalendarViewController.m */,
 			);
 			path = EZCalendar;
 			sourceTree = "<group>";
@@ -509,10 +538,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D2BF50186CBE8F00A14918 /* tweed_@2X.png in Resources */,
 				6575297D185A4E92000E3226 /* 6-black-menu-bar@2x.png in Resources */,
 				65752974185A4E92000E3226 /* 6-black-back-arrow.png in Resources */,
 				65752981185A4E92000E3226 /* 6-black-settings-button@2x.png in Resources */,
 				650C4A87182EC92F0061FA62 /* button.png in Resources */,
+				65D2BF4E186CBE8F00A14918 /* readme.txt in Resources */,
 				650C4A96182EC92F0061FA62 /* search_field@2x.png in Resources */,
 				650C4A97182EC92F0061FA62 /* search_text.png in Resources */,
 				6575295F185A1A4B000E3226 /* 2-orange-menu-bar.png in Resources */,
@@ -539,6 +570,7 @@
 				650C4A8D182EC92F0061FA62 /* header_bg.png in Resources */,
 				65752979185A4E92000E3226 /* 6-black-background@2x.jpg in Resources */,
 				6575297B185A4E92000E3226 /* 6-black-forward-arrow@2x.png in Resources */,
+				65D2BF4F186CBE8F00A14918 /* tweed.png in Resources */,
 				6575295C185A1A4B000E3226 /* 2-orange-background@2x.jpg in Resources */,
 				65F7278A182BF2A30029176B /* Main.storyboard in Resources */,
 				650C4A86182EC92F0061FA62 /* bg_cork@2x.png in Resources */,
@@ -552,6 +584,7 @@
 				650C4A93182EC92F0061FA62 /* pushpin.png in Resources */,
 				650C4A6C182D9DF00061FA62 /* ECEventViewController.xib in Resources */,
 				650C4A8B182EC92F0061FA62 /* divider_bar.png in Resources */,
+				65D2BF52186CC25D00A14918 /* snow.jpg in Resources */,
 				650C4A92182EC92F0061FA62 /* polaroid1_border@2x.png in Resources */,
 				6575295E185A1A4B000E3226 /* 2-orange-bar-button@2x.png in Resources */,
 				650C4A94182EC92F0061FA62 /* pushpin@2x.png in Resources */,
@@ -577,6 +610,7 @@
 			files = (
 				65752984185B356C000E3226 /* SWRevealViewController.m in Sources */,
 				65F7278D182BF2A30029176B /* ECViewController.m in Sources */,
+				65D2BF46186CAC1200A14918 /* ECTodayViewController.m in Sources */,
 				657529B4185BA8B8000E3226 /* TSQCalendarCell.m in Sources */,
 				65F727B4182C22160029176B /* ECEventCell.m in Sources */,
 				65FA88BA184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m in Sources */,

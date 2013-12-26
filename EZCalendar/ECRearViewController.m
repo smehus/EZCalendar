@@ -82,7 +82,7 @@
 {
 
 
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,11 +90,15 @@
     static NSString *CellIdentifier = @"CellIdent";
     UITableViewCell *cell;
     if (indexPath.row == 0) {
-       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+       cell = [tableView dequeueReusableCellWithIdentifier:@"todayCell"];
+        cell.textLabel.text = @"Today";
+    } else if (indexPath.row == 1) {
+        
+         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell.textLabel.text = @"Scheduler";
     } else {
         
-         cell = [tableView dequeueReusableCellWithIdentifier:@"calendar"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"calendar"];
         cell.textLabel.text = @"Calendar";
     }
     
