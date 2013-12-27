@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ECAppDelegate.h"
+#import "ECWeather.h"
 
 
 
@@ -21,10 +22,17 @@
 @property (nonatomic, weak) IBOutlet UIView *firstView;
 @property (nonatomic, weak) IBOutlet UIView *secondView;
 @property (nonatomic, weak) IBOutlet UIView *thirdView;
-
-
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
-@property (nonatomic, strong) NSDictionary *weatherDict;
+@property (nonatomic, weak) IBOutlet UILabel *tempLabel;
+@property (nonatomic, weak) IBOutlet UILabel *weatherLabel;
+
+
+
+
+
+
+
+@property (nonatomic, strong) ECWeather *weather;
 
 @property (nonatomic, strong) CLLocation *currentLocation;
 
@@ -120,17 +128,24 @@
 
 - (void)updateWeather {
     
-    NSLog(@"UPDATE WEATHER");
+
     
-    if (self.weatherDict == nil) {
+    if (self.weather == nil) {
         
         ECAppDelegate *appDel = (ECAppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.weatherDict = appDel.weatherObject;
-        NSLog(@"***WEATHER WAS NIL***");
+        self.weather = appDel.weatherObject;
+        NSLog(@"TODAY'S weather: %@", self.weather.temp);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.tempLabel.text = self.weather.temp;
+            self.weatherLabel.text = self.weather.weather;
+            
+        });
+    
     }
     
     
-    NSLog(@"DICTIONARY %@", self.weatherDict);
+
 }
 
 

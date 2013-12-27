@@ -12,6 +12,7 @@
 #import "ECRearViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "ECTodayViewController.h"
+#import "ECWeather.h"
 
 
 
@@ -149,7 +150,10 @@
         NSString *state = [[placemarks lastObject] administrativeArea];
         NSString *city = [[placemarks lastObject] locality];
         
-        [self getWeather];
+        NSString *stateRep = [state stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSString *cityRep = [city stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        
+        [self getWeatherWithState:stateRep andCity:cityRep];
         
         //NSLog(@"state: %@ city : %@", state, city);
         
@@ -159,11 +163,14 @@
 }
 
 
-- (void)getWeather {
+- (void)getWeatherWithState:(NSString *)state andCity:(NSString *)city {
     
     NSURLSession *session = [NSURLSession sharedSession];
     
-    NSString *urlString = @"http://api.wunderground.com/api/9b9f71223c68aef5/conditions/q/MN/Maple_Grove.json";
+    NSString *urlString = [NSString stringWithFormat:@"http://api.wunderground.com/api/9b9f71223c68aef5/conditions/q/%@/%@.json", state, city];
+    
+    
+    
     
 
     
@@ -172,9 +179,11 @@
         //NSLog(@"DATA %@ RESPONSE %@ ERROR %@", data, response, error);
         
         NSError *err;
-        self.weatherObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"WeatherReceived" object:nil];
+        [self parseOutJSON:dict];
+        
+
     
         
         //NSLog(@"JSON: %@", responseJson);
@@ -182,7 +191,46 @@
     }] resume];
  
 }
- 
+
+- (void)parseOutJSON:(NSDictionary *)dict {
+    
+    NSDictionary *currentObs = [dict objectForKey:@"current_observation"];
+    NSString *feelsLike = [currentObs objectForKey:@"temperature_string"];
+    NSString *weatherString = [currentObs objectForKey:@"weather"];
+    NSString *iconURL = [currentObs objectForKey:@"icon_url"];
+    
+    self.weatherObject = [[ECWeather alloc] init];
+    self.weatherObject.temp = feelsLike;
+    self.weatherObject.weather = weatherString;
+    self.weatherObject.iconURL = iconURL;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"WeatherReceived" object:nil];
+
+    //NSLog(@"dict: %@", currentObs);
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 @end

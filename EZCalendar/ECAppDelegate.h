@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ECWeather.h"
 
 @interface ECAppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate, CLLocationManagerDelegate, NSURLSessionDataDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic, strong) NSDictionary *weatherObject;
+@property (nonatomic, strong) ECWeather *weatherObject;
+
+@property (nonatomic, strong) NSString *weatherString;
 
 @end

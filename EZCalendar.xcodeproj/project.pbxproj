@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6501AA85184AC3FB005BB8E7 /* StackedGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6501AA82184AC3FB005BB8E7 /* StackedGridLayout.m */; };
 		6501AA86184AC3FB005BB8E7 /* StackedGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6501AA84184AC3FB005BB8E7 /* StackedGridLayoutSection.m */; };
+		650A807F186DE9C7008B13FB /* ECWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 650A807E186DE9C7008B13FB /* ECWeather.m */; };
 		650C4A6B182D9DF00061FA62 /* ECEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C4A69182D9DF00061FA62 /* ECEventViewController.m */; };
 		650C4A6C182D9DF00061FA62 /* ECEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 650C4A6A182D9DF00061FA62 /* ECEventViewController.xib */; };
 		650C4A6F182EC6300061FA62 /* ECHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C4A6E182EC6300061FA62 /* ECHeaderView.m */; };
@@ -109,6 +110,8 @@
 		6501AA82184AC3FB005BB8E7 /* StackedGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackedGridLayout.m; sourceTree = "<group>"; };
 		6501AA83184AC3FB005BB8E7 /* StackedGridLayoutSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackedGridLayoutSection.h; sourceTree = "<group>"; };
 		6501AA84184AC3FB005BB8E7 /* StackedGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackedGridLayoutSection.m; sourceTree = "<group>"; };
+		650A807D186DE9C7008B13FB /* ECWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECWeather.h; sourceTree = "<group>"; };
+		650A807E186DE9C7008B13FB /* ECWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECWeather.m; sourceTree = "<group>"; };
 		650C4A68182D9DF00061FA62 /* ECEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECEventViewController.h; sourceTree = "<group>"; };
 		650C4A69182D9DF00061FA62 /* ECEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECEventViewController.m; sourceTree = "<group>"; };
 		650C4A6A182D9DF00061FA62 /* ECEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ECEventViewController.xib; sourceTree = "<group>"; };
@@ -424,6 +427,8 @@
 				65FD470A184E343900EB2DD8 /* ECEventStore.m */,
 				65752992185B45CC000E3226 /* ECRearViewController.h */,
 				65752993185B45CC000E3226 /* ECRearViewController.m */,
+				650A807D186DE9C7008B13FB /* ECWeather.h */,
+				650A807E186DE9C7008B13FB /* ECWeather.m */,
 			);
 			path = EZCalendar;
 			sourceTree = "<group>";
@@ -614,6 +619,7 @@
 				657529B4185BA8B8000E3226 /* TSQCalendarCell.m in Sources */,
 				65F727B4182C22160029176B /* ECEventCell.m in Sources */,
 				65FA88BA184696EF00C8D5B3 /* ECCollectionViewFlowLayout.m in Sources */,
+				650A807F186DE9C7008B13FB /* ECWeather.m in Sources */,
 				65F72787182BF2A30029176B /* ECAppDelegate.m in Sources */,
 				65FD470B184E343900EB2DD8 /* ECEventStore.m in Sources */,
 				650C4A6F182EC6300061FA62 /* ECHeaderView.m in Sources */,
