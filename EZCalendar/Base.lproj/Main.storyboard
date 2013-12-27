@@ -458,6 +458,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndg-qj-49V">
+                                <rect key="frame" x="10" y="339" width="300" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gT9-4f-kdY">
+                                <rect key="frame" x="10" y="460" width="300" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -468,6 +478,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="dateLabel" destination="sVW-GG-hrg" id="1wN-aB-9gU"/>
                         <outlet property="firstView" destination="EQ6-FR-SLC" id="oAe-dh-OWf"/>
                         <outlet property="revealButtonItem" destination="HUz-sp-8jx" id="3q1-vd-EZn"/>
+                        <outlet property="secondView" destination="ndg-qj-49V" id="tSZ-IV-naH"/>
+                        <outlet property="thirdView" destination="gT9-4f-kdY" id="bfV-r5-4WB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6b-IN-twz" userLabel="First Responder" sceneMemberID="firstResponder"/>

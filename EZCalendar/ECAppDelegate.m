@@ -10,6 +10,8 @@
 #import "ECViewController.h"
 #import "SWRevealViewController.h"
 #import "ECRearViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "ECTodayViewController.h"
 
 
 
@@ -18,9 +20,11 @@
 @implementation ECAppDelegate {
     
     BOOL _notFirstRun;
-    
-    
-    
+   
+        CLLocationManager *locationManager;
+        CLLocation *location;
+        CLGeocoder *geocoder;
+ 
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -49,7 +53,12 @@
     //[self.window makeKeyAndVisible];
     
 */
-   
+    
+    locationManager = [[CLLocationManager alloc] init];
+    geocoder = [[CLGeocoder alloc] init];
+    [self startLocationManager];
+    
+
     // Override point for customization after application launch.
     return YES;
 }
@@ -100,5 +109,80 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
+
+
+- (void)startLocationManager {
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        [locationManager startUpdatingLocation];
+    } else {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops@"
+                                                            message:@"You will need to allow location services" delegate:Nil
+                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
+- (void)stopLocationManager {
+    
+    [locationManager stopUpdatingLocation];
+    locationManager.delegate = nil;
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    CLLocation *thisLocation = [locations lastObject];
+    if (thisLocation.horizontalAccuracy < 200) {
+        [self stopLocationManager];
+    }
+    
+    [geocoder reverseGeocodeLocation:thisLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        NSString *state = [[placemarks lastObject] administrativeArea];
+        NSString *city = [[placemarks lastObject] locality];
+        
+        [self getWeather];
+        
+        //NSLog(@"state: %@ city : %@", state, city);
+        
+        
+    }];
+    
+}
+
+
+- (void)getWeather {
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSString *urlString = @"http://api.wunderground.com/api/9b9f71223c68aef5/conditions/q/MN/Maple_Grove.json";
+    
+
+    
+    [[session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        //NSLog(@"DATA %@ RESPONSE %@ ERROR %@", data, response, error);
+        
+        NSError *err;
+        self.weatherObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WeatherReceived" object:nil];
+    
+        
+        //NSLog(@"JSON: %@", responseJson);
+        
+    }] resume];
+ 
+}
+ 
+ 
 
 @end

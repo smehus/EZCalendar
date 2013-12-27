@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface ECAppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate>
+@interface ECAppDelegate : UIResponder <UIApplicationDelegate, SWRevealViewControllerDelegate, CLLocationManagerDelegate, NSURLSessionDataDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic, strong) NSDictionary *weatherObject;
 
 @end

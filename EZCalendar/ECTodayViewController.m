@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CoreLocation/CoreLocation.h>
+#import "ECAppDelegate.h"
 
 
 
@@ -18,7 +19,12 @@
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *revealButtonItem;
 @property (nonatomic, weak) IBOutlet UIView *firstView;
+@property (nonatomic, weak) IBOutlet UIView *secondView;
+@property (nonatomic, weak) IBOutlet UIView *thirdView;
+
+
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
+@property (nonatomic, strong) NSDictionary *weatherDict;
 
 @property (nonatomic, strong) CLLocation *currentLocation;
 
@@ -26,12 +32,7 @@
 
 @end
 
-@implementation ECTodayViewController {
-    
-    CLLocationManager *locationManager;
-    CLLocation *location;
-    CLGeocoder *geocoder;
-}
+@implementation ECTodayViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,15 +50,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"LOCATION MANAGER %@", locationManager);
     
-    // DON'T WANT TO GRAB WEATHER & DATE EVERYTIME YOU MOVE BACK TO THIS PAGE
-    // SHOULD CACHE THE WEATHER AND DATE
-    // USING APP DELEGATE?
+   
     
-    locationManager = [[CLLocationManager alloc] init];
-    geocoder = [[CLGeocoder alloc] init];
-    [self startLocationManager];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateWeather)
+                                                 name:@"WeatherReceived" object:nil];
+    [self updateWeather];
+    
+    
+
     
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector( revealToggle: )];
@@ -67,13 +70,30 @@
     UIColor *blackColorFaded = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
     
     self.firstView.backgroundColor = [UIColor blackColor];
-    self.firstView.layer.cornerRadius = 10.0f;
+    self.firstView.layer.cornerRadius = 5.0f;
+ 
+    self.secondView.backgroundColor = [UIColor blackColor];
+    self.secondView.layer.cornerRadius = 5.0f;
+    
+    self.thirdView.backgroundColor = [UIColor blackColor];
+    self.thirdView.layer.cornerRadius = 5.0f;
+    
+    CAGradientLayer *gradientOne = [CAGradientLayer layer];
+    gradientOne.frame = self.firstView.bounds;
+    gradientOne.colors = [NSArray arrayWithObjects:(id)[blackColor CGColor], (id)[blackColorFaded CGColor], nil];
+    self.firstView.layer.mask = gradientOne;
     
     
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.firstView.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[blackColor CGColor], (id)[blackColorFaded CGColor], nil];
-    self.firstView.layer.mask = gradient;
+    CAGradientLayer *gradientTwo = [CAGradientLayer layer];
+    gradientTwo.frame = self.secondView.bounds;
+    gradientTwo.colors = [NSArray arrayWithObjects:(id)[blackColor CGColor], (id)[blackColorFaded CGColor], nil];
+    self.secondView.layer.mask = gradientTwo;
+    
+    CAGradientLayer *gradientThree = [CAGradientLayer layer];
+    gradientThree.frame = self.thirdView.bounds;
+    gradientThree.colors = [NSArray arrayWithObjects:(id)[blackColor CGColor], (id)[blackColorFaded CGColor], nil];
+    self.thirdView.layer.mask = gradientThree;
+    
     
     NSString *todaysDate = [self formatDate:[NSDate date]];
     self.dateLabel.text = todaysDate;
@@ -98,73 +118,29 @@
 }
 
 
-- (void)startLocationManager {
+- (void)updateWeather {
     
-    if ([CLLocationManager locationServicesEnabled]) {
+    NSLog(@"UPDATE WEATHER");
+    
+    if (self.weatherDict == nil) {
         
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-        [locationManager startUpdatingLocation];
-    } else {
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops@"
-                                                            message:@"You will need to allow location services" delegate:Nil
-                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-    }
-}
-
-- (void)stopLocationManager {
-    
-    [locationManager stopUpdatingLocation];
-    locationManager.delegate = nil;
-}
-
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-    CLLocation *thisLocation = [locations lastObject];
-    if (thisLocation.horizontalAccuracy < 200) {
-        [self stopLocationManager];
+        ECAppDelegate *appDel = (ECAppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.weatherDict = appDel.weatherObject;
+        NSLog(@"***WEATHER WAS NIL***");
     }
     
-    [geocoder reverseGeocodeLocation:thisLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        
-        NSString *state = [[placemarks lastObject] administrativeArea];
-        NSString *city = [[placemarks lastObject] locality];
-        
-        [self getWeather];
-        
-        NSLog(@"state: %@ city : %@", state, city);
-        
-        
-    }];
-   
-}
-
-
-- (void)getWeather {
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    
-    NSString *urlString = @"http://api.wunderground.com/api/9b9f71223c68aef5/conditions/q/MN/Maple_Grove.json";
-    
-    [[session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        //NSLog(@"DATA %@ RESPONSE %@ ERROR %@", data, response, error);
-        
-        NSError *err;
-        NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
-        
-        NSLog(@"JSON: %@", responseJson);
-        
-    }] resume];
-    
-    
+    NSLog(@"DICTIONARY %@", self.weatherDict);
 }
 
 
 
+
+- (void)dealloc {
+    
+    NSLog(@"DEALLOC %@", self);
+    
+}
 
 
 
