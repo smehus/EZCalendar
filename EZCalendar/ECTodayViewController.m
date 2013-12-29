@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ECAppDelegate.h"
 #import "ECWeather.h"
+#import "UIImageView+AFNetworking.h"
 
 
 
@@ -25,6 +26,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
 @property (nonatomic, weak) IBOutlet UILabel *tempLabel;
 @property (nonatomic, weak) IBOutlet UILabel *weatherLabel;
+@property (nonatomic, weak) IBOutlet UILabel *dayLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *iconView;
 
 
 
@@ -59,7 +62,7 @@
 {
     [super viewDidLoad];
     
-   
+    NSLog(@"VIEW LOADE");
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -103,20 +106,37 @@
     self.thirdView.layer.mask = gradientThree;
     
     
-    NSString *todaysDate = [self formatDate:[NSDate date]];
-    self.dateLabel.text = todaysDate;
+    //NSString *todaysDate = [self formatDate:[NSDate date] withIndex:0];
+    //NSString *todaysDay = [self formatDate:[NSDate date] withIndex:1];
+    //self.dateLabel.text = todaysDate;
+    //self.dayLabel.text = todaysDay;
+
 
 }
 
-- (NSString *)formatDate:(NSDate *)date {
+
+
+
+
+- (NSString *)formatDate:(NSDate *)date withIndex:(NSInteger)index {
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //[formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setDateStyle:NSDateFormatterShortStyle];
-    //[formatter setDateStyle:NSDateFormatterShortStyle];
-    //[formatter setTimeStyle:NSDateFormatterShortStyle];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSString *dateString;
     
-    return [formatter stringFromDate:date];
+    if (index == 0 ) {
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        dateString = [formatter stringFromDate:date];
+    } else {
+        [formatter setDateStyle:NSDateFormatterFullStyle];
+       dateString = [formatter stringFromDate:date];
+        NSArray *stringArray = [dateString componentsSeparatedByString:@" "];
+        dateString = [stringArray objectAtIndex:0];
+        dateString = [dateString stringByReplacingOccurrencesOfString:@"," withString:@""];
+        
+        
+    }
+    
+    return dateString;
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,8 +148,8 @@
 
 - (void)updateWeather {
     
-
-    
+    self.dateLabel.text = [self formatDate:[NSDate date] withIndex:0];
+    self.dayLabel.text = [self formatDate:[NSDate date] withIndex:1];
     if (self.weather == nil) {
         
         ECAppDelegate *appDel = (ECAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -139,16 +159,12 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.tempLabel.text = self.weather.temp;
             self.weatherLabel.text = self.weather.weather;
+            [self.iconView setImageWithURL:[NSURL URLWithString:self.weather.iconURL]];
             
         });
     
     }
-    
-    
-
 }
-
-
 
 
 - (void)dealloc {

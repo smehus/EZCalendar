@@ -95,11 +95,8 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     NSLog(@"DID ENTER FOREGROUND");
-    
-    if (_notFirstRun) {
-        NSLog(@"***SETTING UP NOTIFICATIONS***");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"BecomeActive" object:nil];
-    }
+    // when app becomes active, reload data
+    [self startLocationManager];
     
    
     
@@ -118,7 +115,7 @@
 - (void)startLocationManager {
     
     if ([CLLocationManager locationServicesEnabled]) {
-        
+        NSLog(@"starting location manager");
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         [locationManager startUpdatingLocation];
@@ -140,6 +137,12 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     
+    
+    
+    //NEED TO UPDATE SO THAT WHEN YOU MOVE A CERTAIN AMOUNT THE APP UPDATES
+    
+    
+    
     CLLocation *thisLocation = [locations lastObject];
     if (thisLocation.horizontalAccuracy < 200) {
         [self stopLocationManager];
@@ -152,7 +155,7 @@
         
         NSString *stateRep = [state stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         NSString *cityRep = [city stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        
+        NSLog(@"getting weather with state");
         [self getWeatherWithState:stateRep andCity:cityRep];
         
         //NSLog(@"state: %@ city : %@", state, city);
@@ -203,7 +206,7 @@
     self.weatherObject.temp = feelsLike;
     self.weatherObject.weather = weatherString;
     self.weatherObject.iconURL = iconURL;
-    
+    NSLog(@"posting notification");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"WeatherReceived" object:nil];
 
     //NSLog(@"dict: %@", currentObs);
