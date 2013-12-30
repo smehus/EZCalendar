@@ -30,6 +30,9 @@
 @property (nonatomic, weak) IBOutlet UIImageView *iconView;
 
 
+- (IBAction)updateWeather:(id)sender;
+
+
 
 
 
@@ -68,6 +71,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateWeather)
                                                  name:@"WeatherReceived" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didUpdateWeather) name:@"becameActive" object:nil];
     [self updateWeather];
     
     
@@ -150,7 +156,7 @@
     
     self.dateLabel.text = [self formatDate:[NSDate date] withIndex:0];
     self.dayLabel.text = [self formatDate:[NSDate date] withIndex:1];
-    if (self.weather == nil) {
+
         
         ECAppDelegate *appDel = (ECAppDelegate *)[[UIApplication sharedApplication] delegate];
         self.weather = appDel.weatherObject;
@@ -163,7 +169,7 @@
             
         });
     
-    }
+    
 }
 
 
@@ -174,9 +180,24 @@
 }
 
 
+- (IBAction)updateWeather:(id)sender {
+    
+    NSLog(@"UPDATE WEATHER");
+    
+    ECAppDelegate *appDel = (ECAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDel startLocationManager];
 
+}
 
-
+- (void)didUpdateWeather {
+    
+    NSLog(@"UPDATE WEATHER");
+    
+    ECAppDelegate *appDel = (ECAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDel startLocationManager];
+    
+    
+}
 
 
 

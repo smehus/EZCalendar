@@ -19,4 +19,6 @@
 
 @property (nonatomic, strong) NSString *weatherString;
 
+- (void)startLocationManager;
+
 @end

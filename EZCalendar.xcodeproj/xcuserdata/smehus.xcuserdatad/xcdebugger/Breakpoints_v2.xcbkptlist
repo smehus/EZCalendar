@@ -52,13 +52,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EZCalendar/ECTodayViewController.m"
-            timestampString = "410049327.869273"
+            timestampString = "410058286.914178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EZCalendar/ECAppDelegate.m"
+            timestampString = "410057795.983616"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "-getWeatherWithState:andCity:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ECAppDelegate getWeatherWithState:andCity:]"
+                  moduleName = "EZCalendar"
+                  urlString = "file:///Users/smehus/Documents/EZCalendar/EZCalendar/ECAppDelegate.m"
+                  timestampString = "410057803.581706"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "226">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[ECAppDelegate getWeatherWithState:andCity:]_block_invoke"
+                  moduleName = "EZCalendar"
+                  urlString = "file:///Users/smehus/Documents/EZCalendar/EZCalendar/ECAppDelegate.m"
+                  timestampString = "410057803.581925"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

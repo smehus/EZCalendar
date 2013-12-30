@@ -500,6 +500,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </view>
                     <navigationItem key="navigationItem" id="WfF-qw-9Mo">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="HUz-sp-8jx"/>
+                        <barButtonItem key="rightBarButtonItem" title="update" id="rJz-3P-fOT">
+                            <connections>
+                                <action selector="updateWeather:" destination="QWT-hZ-NhI" id="qwO-am-VG1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="sVW-GG-hrg" id="1wN-aB-9gU"/>
