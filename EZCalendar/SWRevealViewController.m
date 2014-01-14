@@ -137,7 +137,7 @@ typedef enum
 
         CALayer *frontViewLayer = _frontView.layer;
         frontViewLayer.masksToBounds = NO;
-        frontViewLayer.shadowColor = [UIColor blackColor].CGColor;
+        frontViewLayer.shadowColor = [UIColor clearColor].CGColor;
         frontViewLayer.shadowOpacity = 1.0f;
         frontViewLayer.shadowOffset = _c.frontViewShadowOffset;
         frontViewLayer.shadowRadius = _c.frontViewShadowRadius;
@@ -161,6 +161,10 @@ typedef enum
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_frontView.bounds];
     _frontView.layer.shadowPath = shadowPath.CGPath;
 }
+
+
+#pragma mark - Rear View Prep
+
 
 
 - (void)prepareRearViewForPosition:(FrontViewPosition)newPosition
@@ -397,6 +401,10 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
             segue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc)
             {
                 [self _setFrontViewController:dvc];
+                CGAffineTransform trans = _frontViewController.view.transform;
+                CGAffineTransformTranslate(trans, 40, 40);
+                CGAffineTransformScale(trans, 0.5, 0.5);
+                _frontViewController.view.transform = trans;
             };
         }
         else if ( [identifier isEqualToString:SWSegueRightIdentifier] )
@@ -404,6 +412,10 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
             segue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc)
             {
                 [self _setRightViewController:dvc];
+                CGAffineTransform trans = _rightViewController.view.transform;
+                CGAffineTransformTranslate(trans, 40, 40);
+                CGAffineTransformScale(trans, 0.5, 0.5);
+                _rightViewController.view.transform = trans;
             };
         }
     }
@@ -445,7 +457,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
     }
     
     // Apple also tells us to do this:
-    _contentView.backgroundColor = [UIColor blackColor];
+    _contentView.backgroundColor = [UIColor clearColor];
     
     // we set the current frontViewPosition to none before seting the
     // desired initial position, this will force proper controller reload
@@ -525,7 +537,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
         return;
     }
 
-    [self _dispatchSetRearViewController:rightViewController];
+   [self _dispatchSetRearViewController:rightViewController];
 }
 
 
@@ -533,6 +545,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 {
     if ( ![self isViewLoaded])
     {
+
         [self _setRightViewController:rightViewController];
         return;
     }
@@ -541,20 +554,55 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 }
 
 
+#pragma mark - EDIT THE SLIDE CONTROLLER
+
+
 - (void)revealToggleAnimated:(BOOL)animated
 {
+    
+    NSLog(@"***REVEAL TOGGLE ANIMATED");
     FrontViewPosition toogledFrontViewPosition = FrontViewPositionLeft;
-    if (_frontViewPosition <= FrontViewPositionLeft)
+    if (_frontViewPosition <= FrontViewPositionLeft) {
+        NSLog(@"REVEAL TOGGLED FIRST IF");
         toogledFrontViewPosition = FrontViewPositionRight;
+        [UIView animateWithDuration:0.2 animations:^{
+            _frontViewController.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.75, 0.75);
+            
+            _frontViewController.view.frame = CGRectMake(0, 100, _frontViewController.view.bounds.size.width, _frontViewController.view.bounds.size.height *.75);
+            _frontViewController.view.alpha = 0.6;
+            _frontViewController.view.layer.cornerRadius = 10;
+            _frontViewController.view.layer.masksToBounds = YES;
+
+        }];
+    } else {
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            _frontViewController.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+            _frontViewController.view.frame = CGRectMake(0, 0, _frontViewController.view.bounds.size.width, _frontViewController.view.bounds.size.height);
+            _frontViewController.view.alpha = 1.0;
+        }];
+    }
+    
+    
     
     [self setFrontViewPosition:toogledFrontViewPosition animated:animated];
-}
+         }
 
 - (void)rightRevealToggleAnimated:(BOOL)animated
 {
+    
+    NSLog(@"***RIGHTREVEALTOGGLEANIMATED");
     FrontViewPosition toogledFrontViewPosition = FrontViewPositionLeft;
     if (_frontViewPosition >= FrontViewPositionLeft)
         toogledFrontViewPosition = FrontViewPositionLeftSide;
+    
+    //My Doing!!
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        _frontViewController.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.25, 1.25);
+        _frontViewController.view.frame = CGRectMake(0, _frontViewController.view.frame.origin.y, _frontViewController.view.bounds.size.width, _frontViewController.view.bounds.size.height);
+        
+    }];
     
     [self setFrontViewPosition:toogledFrontViewPosition animated:animated];
 }
@@ -959,25 +1007,32 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 // Primitive method for right controller transition
 - (void)_setRightViewController:(UIViewController*)newRightViewController
 {
+    
+    
     UIViewController *old = _rightViewController;
     _rightViewController = newRightViewController;
     [self _transitionFromViewController:old toViewController:newRightViewController inView:_contentView.rightView]();
     [self _dequeue];
+     
+     
     
-//    UIViewController *old = _rightViewController;
-//    void (^completion)() = [self _transitionRearController:old toController:newRightViewController inView:_contentView.rightView];
-//    [newRightViewController.view setAlpha:0.0];
-//    [UIView animateWithDuration:_toggleAnimationDuration
-//    animations:^
-//    {
-//        [old.view setAlpha:0.0f];
-//        [newRightViewController.view setAlpha:1.0];
-//    }
-//    completion:^(BOOL finished)
-//    {
-//        completion();
-//        [self _dequeue];
-//    }];
+    /*
+    UIViewController *old = _rightViewController;
+    void (^completion)() = [self _transitionRearController:old toController:newRightViewController inView:_contentView.rightView];
+    [newRightViewController.view setAlpha:0.0];
+    [UIView animateWithDuration:_toggleAnimationDuration
+    animations:^
+    {
+        [old.view setAlpha:0.0f];
+        [newRightViewController.view setAlpha:1.0];
+    }
+    completion:^(BOOL finished)
+    {
+        completion();
+        [self _dequeue];
+    }];
+     
+     */
 }
 
 
