@@ -10,6 +10,7 @@
 #import "ECViewController.h"
 #import "SWRevealViewController.h"
 #import "TSQCalendarView.h"
+#import "ECCustomCell.h"
 
 
 @interface ECRearViewController ()
@@ -36,6 +37,8 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
     
     self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+    
+    self.tableView.backgroundColor = [UIColor colorWithRed: 123/255.0 green: 104/255.0 blue: 238/255.0 alpha:1];
 
     
 }
@@ -46,7 +49,7 @@
 
 }
 
-- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
+- (void) prepareForSegue: (UIStoryboardSegue *)segue sender: (id) sender
 {
   
     
@@ -88,24 +91,33 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellIdent";
-    UITableViewCell *cell;
+    ECCustomCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (indexPath.row == 0) {
-       cell = [tableView dequeueReusableCellWithIdentifier:@"todayCell"];
-        cell.textLabel.text = @"Today";
+        cell.customLabel.text = @"Today";
     } else if (indexPath.row == 1) {
-        
-         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        cell.textLabel.text = @"Scheduler";
-    } else {
-        
-        cell = [tableView dequeueReusableCellWithIdentifier:@"calendar"];
-        cell.textLabel.text = @"Calendar";
+        cell.customLabel.text = @"Scheduler";
+    } else if (indexPath.row == 2) {
+        cell.customLabel.text = @"Month";
     }
+
     
-    
-    
+    cell.customLabel.textColor = [UIColor colorWithRed: 102/255.0 green: 205/255.0 blue: 170/255.0 alpha:1];
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"TodaySegue" sender:nil];
+    } else if (indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"OverviewSegue" sender:nil];
+    } else {
+        [self performSegueWithIdentifier:@"MonthSegue" sender:nil];
+    }
 }
 
 

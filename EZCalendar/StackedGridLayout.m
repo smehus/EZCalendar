@@ -127,6 +127,7 @@
 //
 //
 - (CGSize)collectionViewContentSize {
+    
     return CGSizeMake(_height,
                       self.collectionView.bounds.size.height - 75);
 }

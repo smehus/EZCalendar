@@ -99,7 +99,8 @@
    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"becameActive" object:nil];
    
-    
+
+
     
 }
 

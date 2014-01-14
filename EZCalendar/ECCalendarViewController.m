@@ -46,6 +46,7 @@
     calendarView.delegate = self;
     calendarView.firstDate = startDate;
     calendarView.lastDate = endDAte;
+
     //calendarView.backgroundColor = [UIColor lightGrayColor];
     
     [self.view addSubview:calendarView];

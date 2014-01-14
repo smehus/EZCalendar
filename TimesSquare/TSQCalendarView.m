@@ -97,7 +97,7 @@
 - (void)setBackgroundColor:(UIColor *)backgroundColor;
 {
     [super setBackgroundColor:backgroundColor];
-    [self.tableView setBackgroundColor:backgroundColor];
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)setPinsHeaderToTop:(BOOL)pinsHeaderToTop;
@@ -165,7 +165,14 @@
 - (TSQCalendarMonthHeaderCell *)makeHeaderCellWithIdentifier:(NSString *)identifier;
 {
     TSQCalendarMonthHeaderCell *cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
-    cell.backgroundColor = self.backgroundColor;
+    
+    
+    
+#pragma mark header color
+    
+    // THIS IS THE COLOR FOR THE HEADER
+    
+    cell.backgroundColor = [UIColor whiteColor];
     cell.calendarView = self;
     return cell;
 }

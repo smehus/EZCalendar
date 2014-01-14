@@ -30,7 +30,7 @@
     _calendar = calendar;
     NSString *languageCode = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
     self.layoutDirection = [NSLocale characterDirectionForLanguage:languageCode];
-    self.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
+    self.backgroundColor = [UIColor whiteColor];
     
     CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
     
@@ -41,7 +41,7 @@
     });
     self.shadowOffset = shadowOffset;
     self.columnSpacing = onePixel;
-    self.textColor = [UIColor colorWithRed:0.47f green:0.5f blue:0.53f alpha:1.0f];
+    self.textColor = [UIColor lightGrayColor];
 
     return self;
 }

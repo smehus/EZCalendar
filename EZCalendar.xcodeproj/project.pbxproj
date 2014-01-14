@@ -83,6 +83,7 @@
 		65B2F6A31870D782004EFEB8 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B2F6901870D782004EFEB8 /* UIImageView+AFNetworking.m */; };
 		65B2F6A41870D782004EFEB8 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B2F6931870D782004EFEB8 /* UIProgressView+AFNetworking.m */; };
 		65B2F6A51870D782004EFEB8 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B2F6951870D782004EFEB8 /* UIWebView+AFNetworking.m */; };
+		65CEEF461877BC7800ED71C6 /* ECCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CEEF451877BC7800ED71C6 /* ECCustomCell.m */; };
 		65D2BF46186CAC1200A14918 /* ECTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D2BF45186CAC1200A14918 /* ECTodayViewController.m */; };
 		65D2BF4E186CBE8F00A14918 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65D2BF4B186CBE8F00A14918 /* readme.txt */; };
 		65D2BF4F186CBE8F00A14918 /* tweed.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D2BF4C186CBE8F00A14918 /* tweed.png */; };
@@ -232,6 +233,8 @@
 		65B2F6931870D782004EFEB8 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		65B2F6941870D782004EFEB8 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		65B2F6951870D782004EFEB8 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		65CEEF441877BC7800ED71C6 /* ECCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCustomCell.h; sourceTree = "<group>"; };
+		65CEEF451877BC7800ED71C6 /* ECCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCustomCell.m; sourceTree = "<group>"; };
 		65D2BF44186CAC1200A14918 /* ECTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTodayViewController.h; sourceTree = "<group>"; };
 		65D2BF45186CAC1200A14918 /* ECTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECTodayViewController.m; sourceTree = "<group>"; };
 		65D2BF4B186CBE8F00A14918 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
@@ -529,6 +532,8 @@
 				65752993185B45CC000E3226 /* ECRearViewController.m */,
 				650A807D186DE9C7008B13FB /* ECWeather.h */,
 				650A807E186DE9C7008B13FB /* ECWeather.m */,
+				65CEEF441877BC7800ED71C6 /* ECCustomCell.h */,
+				65CEEF451877BC7800ED71C6 /* ECCustomCell.m */,
 			);
 			path = EZCalendar;
 			sourceTree = "<group>";
@@ -715,6 +720,7 @@
 			files = (
 				65B2F6A21870D782004EFEB8 /* UIButton+AFNetworking.m in Sources */,
 				65752984185B356C000E3226 /* SWRevealViewController.m in Sources */,
+				65CEEF461877BC7800ED71C6 /* ECCustomCell.m in Sources */,
 				65F7278D182BF2A30029176B /* ECViewController.m in Sources */,
 				65D2BF46186CAC1200A14918 /* ECTodayViewController.m in Sources */,
 				65B2F6A41870D782004EFEB8 /* UIProgressView+AFNetworking.m in Sources */,

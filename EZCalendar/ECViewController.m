@@ -78,7 +78,7 @@
     
     self.stackedLayout = [[StackedGridLayout alloc] init];
     self.stackedLayout.headerHeight = 90.0f;
-    self.collectionView.collectionViewLayout = self.stackedLayout;
+    //self.collectionView.collectionViewLayout = self.stackedLayout;
     
     self.eventsArray = [[NSMutableArray alloc] initWithCapacity:20];
     self.firstEventsArray = [[NSMutableArray alloc] initWithCapacity:20];
@@ -90,6 +90,8 @@
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector( revealToggle: )];
     
+    NSString *todaysDate = [self formatDate:[NSDate date]];
+    self.navigationController.navigationBar.topItem.title = todaysDate;
 
     
     [self accessEventStore];
@@ -254,7 +256,8 @@
                     thirdHeader = currentMonth.eventMonth;
                 } else {
                     [self.fourthEventsArray addObject:currentMonth];
-                    fourthHeader = currentMonth.eventMonth;
+                    ECEvent *fourthMonth = [self.fourthEventsArray firstObject];
+                    fourthHeader = fourthMonth.eventMonth;
                 }
                 
                 
@@ -333,38 +336,42 @@
 
 
 
-/*
+
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
-    ECHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ECHeaderView" forIndexPath:indexPath];
+    UICollectionReusableView *reusableView = nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+    
+    ECHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
     NSLog(@"FIRST HEADER: %@", firstHeader);
     
     switch (indexPath.section) {
         case 0:
-            [headerView setSearchText:firstHeader];
+            headerView.sectionLabel.text = firstHeader;
             break;
         case 1:
-            [headerView setSearchText:secondHeader];
+            headerView.sectionLabel.text = secondHeader;
             break;
         case 2:
-            [headerView setSearchText:thirdHeader];
+            headerView.sectionLabel.text = thirdHeader;
             break;
         case 3:
-            [headerView setSearchText:fourthHeader];
+            headerView.sectionLabel.text = fourthHeader;
             break;
             
         default:
             break;
     }
-    
+        reusableView = headerView;
      
     //headerView.backgroundColor = [UIColor redColor];
-    
+    }
      
-    return headerView;
+    return reusableView;
  
 }
-*/
+
 
 
 
@@ -374,7 +381,21 @@
     return [UIColor colorWithRed: 1.0 green:val blue: 0.0 alpha:1.0];
 }
 
-
+#pragma mark - COLLECTION VIEW
+/*
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionReusableView *reusableView = nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+        ECHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        headerView.sectionLabel.text = @"This Works";
+        reusableView = headerView;
+    }
+    
+    return reusableView;
+}
+*/
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -546,8 +567,8 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    
-    return UIEdgeInsetsMake(5, 75, 5, 5);
+                            //75 for stacked grid
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

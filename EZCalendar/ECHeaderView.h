@@ -12,4 +12,7 @@
 
 - (void)setSearchText:(NSString *)text;
 
+@property (nonatomic, strong) NSString *title;
+@property (weak) IBOutlet UILabel *sectionLabel;
+
 @end

@@ -11,7 +11,7 @@
 @interface ECHeaderView ()
 
 @property (weak) IBOutlet UIImageView *backgroundImageView;
-@property (weak) IBOutlet UILabel *sectionLabel;
+
 @end
 
 @implementation ECHeaderView
